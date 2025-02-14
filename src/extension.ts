@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 
-import * as data from "./data";
+import * as data from "./definition/data";
+import definitionByName from "./definition/definition";
 
 interface HoverEntry {
 	position: vscode.Range;
@@ -22,7 +23,6 @@ function parseDocument(document: vscode.TextDocument) {
 	hovers = [];
 	semantics = [];
 	const diagnostics: vscode.Diagnostic[] = [];
-	const definitions = data.definitions;
 
 	const lines = document.getText().split("\n");
 	let currentDef: data.DefinitionInfo | null = null;
@@ -87,11 +87,9 @@ function parseDocument(document: vscode.TextDocument) {
 
 				return;
 			}
-			for (let defIndex = 0; defIndex < definitions.length; defIndex++) {
-				if (firstWord !== definitions[defIndex].name) {
-					continue;
-				}
-				currentDef = definitions[defIndex]
+			let tmpDef = definitionByName(firstWord);
+			if (tmpDef) {
+				currentDef = tmpDef;
 				propIndex = 0;
 
 				hovers.push({
@@ -105,6 +103,7 @@ function parseDocument(document: vscode.TextDocument) {
 					tokenType: "keyword",
 				});
 
+
 				if (currentDef.hasTag) {
 					if (!lineArgs.length) {
 						diagnostics.push({
@@ -112,7 +111,7 @@ function parseDocument(document: vscode.TextDocument) {
 							range: new vscode.Range(new vscode.Position(lineNumber, 0), new vscode.Position(lineNumber, 6)),
 							severity: vscode.DiagnosticSeverity.Error,
 						});
-						continue;
+						return;
 					}
 					if (!lineArgs[0].match(/\".*\"/)) {
 						diagnostics.push({
@@ -120,7 +119,7 @@ function parseDocument(document: vscode.TextDocument) {
 							range: new vscode.Range(new vscode.Position(lineNumber, 0), new vscode.Position(lineNumber, 6)),
 							severity: vscode.DiagnosticSeverity.Error,
 						});
-						continue;
+						return;
 					}
 					hovers.push({
 						position: new vscode.Range(new vscode.Position(lineNumber, 0), new vscode.Position(lineNumber, firstWord.length)),
@@ -135,8 +134,10 @@ function parseDocument(document: vscode.TextDocument) {
 					});
 
 				}
-				break;
+
+				return;
 			}
+
 			if (currentDef === null) {
 				diagnostics.push({
 					message: "Unknown definition: " + firstWord + ".",
