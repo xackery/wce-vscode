@@ -15,11 +15,12 @@ interface TokenEntry {
 	tokenType: string;
 }
 
-let semanticCache: TokenEntry[] = [];
+let semantics: TokenEntry[] = [];
 
 function parseDocument(document: vscode.TextDocument) {
+	if (document.languageId != "wce") return;
 	hovers = [];
-	semanticCache = [];
+	semantics = [];
 	const diagnostics: vscode.Diagnostic[] = [];
 	const definitions = data.definitions;
 
@@ -34,7 +35,7 @@ function parseDocument(document: vscode.TextDocument) {
 		if (words.length === 0) return;
 
 		let firstWord = words[0];
-		if (firstWord.length === 0) return;;
+		if (firstWord.length === 0) return;
 
 		const lineArgs = words.slice(1);
 		// check if lineArgs has a //, if so remove elements including
@@ -46,7 +47,7 @@ function parseDocument(document: vscode.TextDocument) {
 		if (line.indexOf("//") !== -1) {
 			const commentIndex = line.indexOf("//");
 			const comment = line.slice(commentIndex);
-			semanticCache.push({
+			semantics.push({
 				position: new vscode.Range(new vscode.Position(lineNumber, commentIndex), new vscode.Position(lineNumber, commentIndex + comment.length)),
 				tokenType: "comment",
 			});
@@ -55,6 +56,37 @@ function parseDocument(document: vscode.TextDocument) {
 		if (line.startsWith("//")) return;
 
 		if (currentDef === null) {
+			if (firstWord === "INCLUDE") {
+				hovers.push({
+					position: new vscode.Range(new vscode.Position(lineNumber, 0), new vscode.Position(lineNumber, 7)),
+					hoverText: "Include a file.",
+					type: "definition",
+				});
+
+				semantics.push({
+					position: new vscode.Range(new vscode.Position(lineNumber, 0), new vscode.Position(lineNumber, 7)),
+					tokenType: "keyword",
+				});
+				if (!lineArgs.length) {
+					diagnostics.push({
+						message: "Include path is missing.",
+						range: new vscode.Range(new vscode.Position(lineNumber, 0), new vscode.Position(lineNumber, 6)),
+						severity: vscode.DiagnosticSeverity.Error,
+					});
+					return;
+				}
+				if (!lineArgs[0].match(/\".*\"/)) {
+					diagnostics.push({
+						message: "Include path needs to be quoted.",
+						range: new vscode.Range(new vscode.Position(lineNumber, 0), new vscode.Position(lineNumber, 6)),
+						severity: vscode.DiagnosticSeverity.Error,
+					});
+					return;
+				}
+
+
+				return;
+			}
 			for (let defIndex = 0; defIndex < definitions.length; defIndex++) {
 				if (firstWord !== definitions[defIndex].name) {
 					continue;
@@ -68,7 +100,7 @@ function parseDocument(document: vscode.TextDocument) {
 					type: "definition",
 				});
 
-				semanticCache.push({
+				semantics.push({
 					position: new vscode.Range(new vscode.Position(lineNumber, 0), new vscode.Position(lineNumber, firstWord.length)),
 					tokenType: "keyword",
 				});
@@ -95,6 +127,13 @@ function parseDocument(document: vscode.TextDocument) {
 						hoverText: "Tag for definition.",
 						type: "definition",
 					});
+
+
+					semantics.push({
+						position: new vscode.Range(new vscode.Position(lineNumber, firstWord.length + 1), new vscode.Position(lineNumber, firstWord.length + 1 + lineArgs[0].length)),
+						tokenType: "string",
+					});
+
 				}
 				break;
 			}
@@ -109,6 +148,7 @@ function parseDocument(document: vscode.TextDocument) {
 		}
 
 		const prop = currentDef.properties[propIndex];
+		propIndex++;
 		if (!prop) {
 			propIndex = 0;
 			currentDef = null;
@@ -128,7 +168,7 @@ function parseDocument(document: vscode.TextDocument) {
 			hoverText: prop.description,
 			type: "property",
 		});
-		semanticCache.push({
+		semantics.push({
 			position: new vscode.Range(new vscode.Position(lineNumber, 0), new vscode.Position(lineNumber, firstWord.length + 1)),
 			tokenType: "property",
 		});
@@ -156,7 +196,7 @@ function parseDocument(document: vscode.TextDocument) {
 				if (!firstWord.endsWith("?")) {
 					expected = "non-NULL";
 				}
-				semanticCache.push({
+				semantics.push({
 					position: argRange,
 					tokenType: "number",
 				});
@@ -164,28 +204,37 @@ function parseDocument(document: vscode.TextDocument) {
 				switch (argFormat) {
 					case "%s":
 						if (typeof argValue !== "string") expected = "string";
-						semanticCache.push({
+						semantics.push({
 							position: argRange,
 							tokenType: "string",
 						});
 						break;
 					case "%d":
 						if (isNaN(parseInt(argValue, 10))) expected = "integer";
-						semanticCache.push({
+						semantics.push({
 							position: argRange,
 							tokenType: "number",
 						});
 						break;
+					case "%0.8f":
+						// 0.00000000e+00
+						if (!argValue.match(/\d\.\d{8}e[\+\-]\d{2}/)) expected = "float";
+						semantics.push({
+							position: argRange,
+							tokenType: "number",
+						});
+						break;
+
 					case "%f":
 						if (!isNaN(parseFloat(argValue))) expected = "float";
-						semanticCache.push({
+						semantics.push({
 							position: argRange,
 							tokenType: "number",
 						});
 						break;
 					default:
 						expected = "unknown";
-						semanticCache.push({
+						semantics.push({
 							position: argRange,
 							tokenType: "unknown",
 						});
@@ -216,9 +265,12 @@ function parseDocument(document: vscode.TextDocument) {
 			});
 		}
 
-
-
-		propIndex++;
+		const nextProp = currentDef.properties[propIndex];
+		if (!nextProp) {
+			propIndex = 0;
+			currentDef = null;
+			return;
+		}
 	});
 
 	diagnosticCollection.set(document.uri, diagnostics);
@@ -246,7 +298,7 @@ class WCESemanticTokensProvider implements vscode.DocumentSemanticTokensProvider
 	): vscode.ProviderResult<vscode.SemanticTokens> {
 		const builder = new vscode.SemanticTokensBuilder(legend);
 
-		for (const entry of semanticCache) {
+		for (const entry of semantics) {
 			builder.push(entry.position, entry.tokenType);
 		}
 

@@ -1,8 +1,10 @@
 {
   "name": "wce-vscode",
-  "displayName": "wce-vscode",
+  "displayName": "WCE Syntax Support",
   "description": "WCE (WorldCom Emulator) extension support ",
-  "version": "0.0.1",
+  "publisher": "xackery",
+  "version": "0.0.2",
+  "icon": "images/logo.png",
   "engines": {
     "vscode": "^1.97.0"
   },
