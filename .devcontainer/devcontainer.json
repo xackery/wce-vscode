@@ -1,0 +1,21 @@
+{
+    "name": "VSCode Extension Dev",
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.shell.linux": "/bin/bash"
+        },
+        "extensions": [
+          "ms-vscode.vscode-typescript-next"
+        ]
+      }
+    },    
+    "postCreateCommand": "npm install -g yo generator-code",
+    "remoteUser": "node",
+    "workspaceFolder": "/src",
+  	"workspaceMount": "source=${localWorkspaceFolder},target=/src,type=bind,consistency=cached"
+  }
+  
