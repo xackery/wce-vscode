@@ -1,100 +1,288 @@
+// Generated from quail, DO NOT EDIT
 import * as data from "./data";
 
 export const hierarchicalspritedef: data.DefinitionInfo = {
-    name: "HIERARCHICALSPRITEDEF",
-    hasTag: true,
-    description: "A hierarchical sprite definition.",
-    properties: [
+    Name: "HIERARCHICALSPRITEDEF",
+    HasTag: true,
+    Note: "Wld  Hierarchical Sprite Def",
+    Description: "",
+    Properties: [
         {
-            name: "NUMDAGS",
-            isArrayNum: true,
-            description: "The number of DAGs in the sprite.",
-            args: [
+            Name: "NUMDAGS",
+            Note: "",
+            Description: "",
+            Args: [
                 {
-                    name: "num dags",
-                    description: "The number of DAGs.",
-                    format: "%d",
-                },
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: [
+                {
+                    Name: "DAG",
+                    Note: "",
+                    Description: "",
+                    Args: null,
+                    Properties: null
+                },
+                {
+                    Name: "TAG",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%s",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "SPRITE",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%s",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "SPRITEINDEX",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "TRACK",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%s",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "TRACKINDEX",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%s",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "SUBDAGLIST",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d...",
+                            Example: "1 1"
+                        }
+                    ],
+                    Properties: null
+                }
+            ]
         },
         {
-            name: "NUMATTACHEDSKINS",
-            isArrayNum: true,
-            description: "The number of attached skins in the sprite.",
-            args: [
+            Name: "NUMATTACHEDSKINS",
+            Note: "",
+            Description: "",
+            Args: [
                 {
-                    name: "num attached skins",
-                    description: "The number of attached skins.",
-                    format: "%d",
-                },
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: [
+                {
+                    Name: "ATTACHEDSKIN",
+                    Note: "",
+                    Description: "",
+                    Args: null,
+                    Properties: null
+                },
+                {
+                    Name: "DMSPRITE",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%s",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "DMSPRITEINDEX",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "LINKSKINUPDATESTODAGINDEX",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                }
+            ]
         },
         {
-            name: "POLYHEDRON",
-            description: "The polyhedron definition.",
-            args: [
-                {
-                    name: "definition",
-                    description: "The definition of the polyhedron.",
-                    format: "%s",
-                },
-            ],
+            Name: "POLYHEDRON",
+            Note: "",
+            Description: "",
+            Args: null,
+            Properties: null
         },
         {
-            name: "CENTEROFFSET?",
-            description: "The center offset of the sprite.",
-            args: [
+            Name: "DEFINITION",
+            Note: "",
+            Description: "",
+            Args: [
                 {
-                    name: "x",
-                    description: "The x offset.",
-                    format: "%0.8f",
-                },
-                {
-                    name: "y",
-                    description: "The y offset.",
-                    format: "%0.8f",
-                },
-                {
-                    name: "z",
-                    description: "The z offset.",
-                    format: "%0.8f",
-                },
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%s",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "BOUNDINGRADIUS?",
-            description: "The bounding radius of the sprite.",
-            args: [
+            Name: "CENTEROFFSET?",
+            Note: "",
+            Description: "",
+            Args: [
                 {
-                    name: "radius",
-                    description: "The bounding radius.",
-                    format: "%0.8f",
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%0.8e",
+                    Example: ""
                 },
+                {
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%0.8e",
+                    Example: ""
+                },
+                {
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%0.8e",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "HEXTWOHUNDREDFLAG",
-            description: "The hex two hundred flag.",
-            args: [
+            Name: "BOUNDINGRADIUS?",
+            Note: "",
+            Description: "",
+            Args: [
                 {
-                    name: "flag",
-                    description: "The hex two hundred flag.",
-                    format: "%d",
-                },
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%0.8e",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "HEXTWENTYTHOUSANDFLAG",
-            description: "The hex twenty thousand flag.",
-            args: [
+            Name: "HEXTWOHUNDREDFLAG",
+            Note: "also known as HAVEATTACHEDSKINS",
+            Description: "If you have an attached skin, it has to be 1. If your meshes are just attached to DAGs and not the HS_DEF directly, then it should be 0. Some items are attached skins, and some aren't",
+            Args: [
                 {
-                    name: "flag",
-                    description: "The hex twenty thousand flag.",
-                    format: "%d",
-                },
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
-    ],
-};
-
-export default hierarchicalspritedef;
+        {
+            Name: "HEXTWENTYTHOUSANDFLAG",
+            Note: "also known as DAGCOLLISONS",
+            Description: "",
+            Args: [
+                {
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
+            ],
+            Properties: null
+        }
+    ]
+}

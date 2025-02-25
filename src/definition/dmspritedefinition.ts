@@ -1,8 +1,8 @@
 // Generated from quail, DO NOT EDIT
 import * as data from "./data";
 
-export const dmspritedef2: data.DefinitionInfo = {
-    Name: "DMSPRITEDEF2",
+export const dmspritedefinition: data.DefinitionInfo = {
+    Name: "DMSPRITEDEFINITION",
     HasTag: true,
     Note: "Wld DM sprite definition",
     Description: "",
@@ -23,29 +23,103 @@ export const dmspritedef2: data.DefinitionInfo = {
             Properties: null
         },
         {
-            Name: "CENTEROFFSET",
-            Note: "The center offset of the sprite",
+            Name: "FRAGMENT1",
+            Note: "Fragment 1",
+            Description: "",
+            Args: [
+                {
+                    Name: "index",
+                    Note: "fragment index",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
+            ],
+            Properties: null
+        },
+        {
+            Name: "MATERIALPALETTE",
+            Note: "Material palette tag",
+            Description: "",
+            Args: [
+                {
+                    Name: "tag",
+                    Note: "Tag",
+                    Description: "",
+                    Format: "%s",
+                    Example: ""
+                }
+            ],
+            Properties: null
+        },
+        {
+            Name: "FRAGMENT3",
+            Note: "Fragment 3",
+            Description: "",
+            Args: [
+                {
+                    Name: "fragment 3",
+                    Note: "fragment 3",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
+            ],
+            Properties: null
+        },
+        {
+            Name: "CENTER?",
+            Note: "center?",
             Description: "",
             Args: [
                 {
                     Name: "x",
-                    Note: "The x offset",
+                    Note: "The x coordinate",
                     Description: "",
                     Format: "%0.8e",
                     Example: ""
                 },
                 {
                     Name: "y",
-                    Note: "The y offset",
+                    Note: "The y coordinate",
                     Description: "",
                     Format: "%0.8e",
                     Example: ""
                 },
                 {
                     Name: "z",
-                    Note: "The z offset",
+                    Note: "The z coordinate",
                     Description: "",
                     Format: "%0.8e",
+                    Example: ""
+                }
+            ],
+            Properties: null
+        },
+        {
+            Name: "PARAMS1?",
+            Note: "params1",
+            Description: "",
+            Args: [
+                {
+                    Name: "params1",
+                    Note: "params1",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                },
+                {
+                    Name: "params1",
+                    Note: "params1",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                },
+                {
+                    Name: "params1",
+                    Note: "params1",
+                    Description: "",
+                    Format: "%d",
                     Example: ""
                 }
             ],
@@ -97,13 +171,13 @@ export const dmspritedef2: data.DefinitionInfo = {
             ]
         },
         {
-            Name: "NUMUVS",
-            Note: "The number of UVs in the sprite",
+            Name: "NUMTEXCOORDS",
+            Note: "The number of texture coords",
             Description: "",
             Args: [
                 {
-                    Name: "num uvs",
-                    Note: "The number of UVs",
+                    Name: "num tex coords",
+                    Note: "The number of tex coords",
                     Description: "",
                     Format: "%d",
                     Example: ""
@@ -112,19 +186,19 @@ export const dmspritedef2: data.DefinitionInfo = {
             Properties: [
                 {
                     Name: "UV",
-                    Note: "UV entry",
+                    Note: "The coordinates of a texture normal",
                     Description: "",
                     Args: [
                         {
                             Name: "u",
-                            Note: "U on UV map",
+                            Note: "The u coordinate",
                             Description: "",
                             Format: "%0.8e",
                             Example: ""
                         },
                         {
                             Name: "v",
-                            Note: "V on UV map",
+                            Note: "The v coordinate",
                             Description: "",
                             Format: "%0.8e",
                             Example: ""
@@ -135,7 +209,7 @@ export const dmspritedef2: data.DefinitionInfo = {
             ]
         },
         {
-            Name: "NUMVERTEXNORMALS",
+            Name: "NUMNORMALS",
             Note: "The number of vertex normals in the sprite",
             Description: "",
             Args: [
@@ -180,7 +254,7 @@ export const dmspritedef2: data.DefinitionInfo = {
             ]
         },
         {
-            Name: "NUMVERTEXCOLORS",
+            Name: "NUMCOLORS",
             Note: "The number of vertex colors in the sprite",
             Description: "",
             Args: [
@@ -232,89 +306,7 @@ export const dmspritedef2: data.DefinitionInfo = {
             ]
         },
         {
-            Name: "SKINASSIGNMENTGROUPS",
-            Note: "The skin assignment groups",
-            Description: "",
-            Args: [
-                {
-                    Name: "group size",
-                    Note: "The size of the group",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
-                },
-                {
-                    Name: "group data",
-                    Note: "The data of the group",
-                    Description: "",
-                    Format: "%d...",
-                    Example: "2 3"
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "MATERIALPALETTE",
-            Note: "The material palette used by the sprite",
-            Description: "",
-            Args: [
-                {
-                    Name: "palette name",
-                    Note: "The name of the material palette",
-                    Description: "",
-                    Format: "%s",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "DMTRACKINST",
-            Note: "The DM track instance",
-            Description: "",
-            Args: [
-                {
-                    Name: "track instance",
-                    Note: "The track instance",
-                    Description: "",
-                    Format: "%s",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "POLYHEDRON",
-            Note: "The polyhedron definition",
-            Description: "",
-            Args: [
-                {
-                    Name: "definition",
-                    Note: "The definition of the polyhedron",
-                    Description: "",
-                    Format: "%s",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "DEFINITION",
-            Note: "The definition reference",
-            Description: "",
-            Args: [
-                {
-                    Name: "definition",
-                    Note: "The definition",
-                    Description: "",
-                    Format: "%s",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "NUMFACE2S",
+            Name: "NUMFACES",
             Note: "The number of face2s in the sprite",
             Description: "",
             Args: [
@@ -328,20 +320,56 @@ export const dmspritedef2: data.DefinitionInfo = {
             ],
             Properties: [
                 {
-                    Name: "DMFACE2",
+                    Name: "DMFACE",
                     Note: "DM Face 2 Entries",
                     Description: "",
                     Args: null,
                     Properties: null
                 },
                 {
-                    Name: "PASSABLE",
-                    Note: "Is face passable?",
+                    Name: "FLAG",
+                    Note: "face flags",
                     Description: "",
                     Args: [
                         {
-                            Name: "passable",
-                            Note: "Is face passable?",
+                            Name: "flag",
+                            Note: "face flags",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "DATA",
+                    Note: "face data",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "face data index 0",
+                            Note: "Index 0 of face data",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "face data index 1",
+                            Note: "Index 1 of face data",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "face data index 2",
+                            Note: "Index 2 of face data",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "face data index 3",
+                            Note: "Index 3 of face data",
                             Description: "",
                             Format: "%d",
                             Example: ""
@@ -440,6 +468,43 @@ export const dmspritedef2: data.DefinitionInfo = {
             ]
         },
         {
+            Name: "SKINASSIGNMENTGROUPS",
+            Note: "The skin assignment groups",
+            Description: "",
+            Args: [
+                {
+                    Name: "group size",
+                    Note: "The size of the group",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                },
+                {
+                    Name: "group data",
+                    Note: "The data of the group",
+                    Description: "",
+                    Format: "%d...",
+                    Example: "2 3"
+                }
+            ],
+            Properties: null
+        },
+        {
+            Name: "DATA8",
+            Note: "data 8 information",
+            Description: "",
+            Args: [
+                {
+                    Name: "8 info",
+                    Note: "8 info",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
+            ],
+            Properties: null
+        },
+        {
             Name: "FACEMATERIALGROUPS",
             Note: "The face material groups",
             Description: "",
@@ -498,176 +563,27 @@ export const dmspritedef2: data.DefinitionInfo = {
             Properties: null
         },
         {
-            Name: "BOUNDINGBOXMIN",
-            Note: "The minimum bounding box coordinates",
+            Name: "PARAMS2?",
+            Note: "params2",
             Description: "",
             Args: [
                 {
-                    Name: "x",
-                    Note: "The x coordinate",
+                    Name: "params2",
+                    Note: "params2",
                     Description: "",
-                    Format: "%0.8e",
+                    Format: "%d",
                     Example: ""
                 },
                 {
-                    Name: "y",
-                    Note: "The y coordinate",
+                    Name: "params2",
+                    Note: "params2",
                     Description: "",
-                    Format: "%0.8e",
+                    Format: "%d",
                     Example: ""
                 },
                 {
-                    Name: "z",
-                    Note: "The z coordinate",
-                    Description: "",
-                    Format: "%0.8e",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "BOUNDINGBOXMAX",
-            Note: "The maximum bounding box coordinates",
-            Description: "",
-            Args: [
-                {
-                    Name: "x",
-                    Note: "The x coordinate",
-                    Description: "",
-                    Format: "%0.8e",
-                    Example: ""
-                },
-                {
-                    Name: "y",
-                    Note: "The y coordinate",
-                    Description: "",
-                    Format: "%0.8e",
-                    Example: ""
-                },
-                {
-                    Name: "z",
-                    Note: "The z coordinate",
-                    Description: "",
-                    Format: "%0.8e",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "BOUNDINGRADIUS",
-            Note: "The bounding radius of the sprite",
-            Description: "",
-            Args: [
-                {
-                    Name: "radius",
-                    Note: "The bounding radius",
-                    Description: "",
-                    Format: "%0.8e",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "FPSCALE",
-            Note: "The FPS scale of the sprite",
-            Description: "",
-            Args: [
-                {
-                    Name: "scale",
-                    Note: "The FPS scale",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "HEXONEFLAG",
-            Note: "The hex one flag",
-            Description: "",
-            Args: [
-                {
-                    Name: "flag",
-                    Note: "The hex one flag",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "HEXTWOFLAG",
-            Note: "The hex two flag",
-            Description: "",
-            Args: [
-                {
-                    Name: "flag",
-                    Note: "The hex two flag",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "HEXFOURTHOUSANDFLAG",
-            Note: "The hex four thousand flag",
-            Description: "",
-            Args: [
-                {
-                    Name: "flag",
-                    Note: "The hex four thousand flag",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "HEXEIGHTTHOUSANDFLAG",
-            Note: "The hex eight thousand flag",
-            Description: "",
-            Args: [
-                {
-                    Name: "flag",
-                    Note: "The hex eight thousand flag",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "HEXTENTHOUSANDFLAG",
-            Note: "The hex ten thousand flag",
-            Description: "",
-            Args: [
-                {
-                    Name: "flag",
-                    Note: "The hex ten thousand flag",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "HEXTWENTYTHOUSANDFLAG",
-            Note: "The hex twenty thousand flag",
-            Description: "",
-            Args: [
-                {
-                    Name: "flag",
-                    Note: "The hex twenty thousand flag",
+                    Name: "params2",
+                    Note: "params2",
                     Description: "",
                     Format: "%d",
                     Example: ""

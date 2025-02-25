@@ -1,45 +1,56 @@
+// Generated from quail, DO NOT EDIT
 import * as data from "./data";
 
 export const worlddef: data.DefinitionInfo = {
-    name: "WORLDDEF",
-    hasTag: false,
-    description: "A world definition. This is a collection of properties that defines a world.",
-    properties: [
+    Name: "WORLDDEF",
+    HasTag: false,
+    Note: "Wld World definition",
+    Description: "This is a collection of properties that defines a world",
+    Properties: [
         {
-            name: "NEWWORLD",
-            description: "Is this a new wld file?",
-            args: [
+            Name: "NEWWORLD",
+            Note: "Is this a new wld file?",
+            Description: "This is used exclusively in s3d files. For most cases, can just be 0 unless imported",
+            Args: [
                 {
-                    name: "version",
-                    description: "0: old wld versioning, 1: new wld versioning.",
-                    format: "%d",
-                },
+                    Name: "version",
+                    Note: "0: old wld versioning, 1: new wld versioning",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "ZONE",
-            description: "Should this wce be treated like a zone?",
-            args: [
+            Name: "ZONE",
+            Note: "Should this wce be treated like a zone?",
+            Description: "",
+            Args: [
                 {
-                    name: "is zone",
-                    description: "0: no, 1: yes.",
-                    format: "%s",
-                },
+                    Name: "is zone",
+                    Note: "0: no, 1: yes",
+                    Description: "",
+                    Format: "%s",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "EQGVERSION?",
-            description: "Used in eqg parsing for version rebuilding.",
-            args: [
+            Name: "EQGVERSION?",
+            Note: "Used in eqg parsing for version rebuilding",
+            Description: "",
+            Args: [
                 {
-                    name: "version",
-                    description: "The version of the eqg file.",
-                    format: "%d",
-                },
+                    Name: "version",
+                    Note: "The version of the eqg file",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         }
-
-    ],
+    ]
 }
-
-export default worlddef;

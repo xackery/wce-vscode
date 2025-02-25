@@ -1,34 +1,42 @@
+// Generated from quail, DO NOT EDIT
 import * as data from "./data";
 
 export const materialpalette: data.DefinitionInfo = {
-    name: "MATERIALPALETTE",
-    hasTag: true,
-    description: "A material palette definition.",
-    properties: [
+    Name: "MATERIALPALETTE",
+    HasTag: true,
+    Note: "Wld Material Palette",
+    Description: "",
+    Properties: [
         {
-            name: "NUMMATERIALS",
-            isArrayNum: true,
-            description: "The number of materials in the palette.",
-            args: [
+            Name: "NUMMATERIALS",
+            Note: "Number of materials in the palette",
+            Description: "",
+            Args: [
                 {
-                    name: "num materials",
-                    description: "The number of materials.",
-                    format: "%d",
-                },
+                    Name: "count",
+                    Note: "Number of materials",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
-        },
-        {
-            name: "MATERIAL",
-            description: "A material in the palette.",
-            args: [
+            Properties: [
                 {
-                    name: "material name",
-                    description: "The name of the material.",
-                    format: "%s",
-                },
-            ],
-        },
-    ],
-};
-
-export default materialpalette;
+                    Name: "MATERIAL",
+                    Note: "Material tag",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "tag",
+                            Note: "Tag of material",
+                            Description: "",
+                            Format: "%s",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                }
+            ]
+        }
+    ]
+}

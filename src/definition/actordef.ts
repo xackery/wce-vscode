@@ -1,130 +1,257 @@
+// Generated from quail, DO NOT EDIT
 import * as data from "./data";
 
 export const actordef: data.DefinitionInfo = {
-    name: "ACTORDEF",
-    hasTag: true,
-    description: "An actor definition.",
-    properties: [
+    Name: "ACTORDEF",
+    HasTag: true,
+    Note: "Wld actor definition",
+    Description: "",
+    Properties: [
         {
-            name: "CALLBACK",
-            description: "The callback function for the actor.",
-            args: [
+            Name: "CALLBACK",
+            Note: "The callback function for the actor",
+            Description: "",
+            Args: [
                 {
-                    name: "callback",
-                    description: "The callback function.",
-                    format: "%s",
-                },
+                    Name: "callback",
+                    Note: "The callback function",
+                    Description: "",
+                    Format: "%s",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "BOUNDSREF",
-            description: "The bounds reference for the actor.",
-            args: [
+            Name: "BOUNDSREF",
+            Note: "The bounds reference for the actor",
+            Description: "",
+            Args: [
                 {
-                    name: "bounds ref",
-                    description: "The bounds reference.",
-                    format: "%d",
-                },
+                    Name: "bounds ref",
+                    Note: "The bounds reference",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "CURRENTACTION?",
-            description: "The current action of the actor.",
-            args: [
+            Name: "CURRENTACTION?",
+            Note: "The current action of the actor",
+            Description: "",
+            Args: [
                 {
-                    name: "current action",
-                    description: "The current action.",
-                    format: "%s",
-                },
+                    Name: "current action",
+                    Note: "The current action",
+                    Description: "",
+                    Format: "%s",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "LOCATION?",
-            description: "The location of the actor.",
-            args: [
+            Name: "LOCATION?",
+            Note: "The location of the actor",
+            Description: "",
+            Args: [
                 {
-                    name: "x",
-                    description: "The x coordinate.",
-                    format: "%0.8f",
+                    Name: "x",
+                    Note: "The x coordinate",
+                    Description: "",
+                    Format: "%0.8e",
+                    Example: ""
                 },
                 {
-                    name: "y",
-                    description: "The y coordinate.",
-                    format: "%0.8f",
+                    Name: "y",
+                    Note: "The y coordinate",
+                    Description: "",
+                    Format: "%0.8e",
+                    Example: ""
                 },
                 {
-                    name: "z",
-                    description: "The z coordinate.",
-                    format: "%0.8f",
+                    Name: "z",
+                    Note: "The z coordinate",
+                    Description: "",
+                    Format: "%0.8e",
+                    Example: ""
                 },
                 {
-                    name: "w-rot",
-                    description: "The w rotation.",
-                    format: "%d",
+                    Name: "x-rot",
+                    Note: "The x rotation",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
                 },
                 {
-                    name: "x-rot",
-                    description: "The x rotation.",
-                    format: "%d",
+                    Name: "y-rot",
+                    Note: "The y rotation",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
                 },
                 {
-                    name: "y-rot",
-                    description: "The y rotation.",
-                    format: "%d",
-                },
-                {
-                    name: "z-rot",
-                    description: "The z rotation.",
-                    format: "%d",
-                },
+                    Name: "z-rot",
+                    Note: "The z rotation",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "ACTIVEGEOMETRY?",
-            description: "The active geometry of the actor.",
-            args: [
+            Name: "ACTIVEGEOMETRY?",
+            Note: "The active geometry of the actor",
+            Description: "",
+            Args: [
                 {
-                    name: "active geometry",
-                    description: "The active geometry.",
-                    format: "%s",
-                },
+                    Name: "active geometry",
+                    Note: "The active geometry",
+                    Description: "",
+                    Format: "%s",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "NUMACTIONS",
-            isArrayNum: true,
-            description: "The number of actions for the actor.",
-            args: [
+            Name: "NUMACTIONS",
+            Note: "The number of actions for the actor",
+            Description: "",
+            Args: [
                 {
-                    name: "num actions",
-                    description: "The number of actions.",
-                    format: "%d",
-                },
+                    Name: "num actions",
+                    Note: "The number of actions",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: [
+                {
+                    Name: "ACTION",
+                    Note: "Action entry",
+                    Description: "",
+                    Args: null,
+                    Properties: null
+                },
+                {
+                    Name: "UNK1",
+                    Note: "Unknown entry 1",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "unk1",
+                            Note: "value of unk1",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "NUMLEVELSOFDETAIL",
+                    Note: "Number of levels of detail",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "lod value",
+                            Note: "Number of levels of detail",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: [
+                        {
+                            Name: "LEVELOFDETAIL",
+                            Note: "Level of detail entry",
+                            Description: "",
+                            Args: null,
+                            Properties: null
+                        },
+                        {
+                            Name: "SPRITE",
+                            Note: "Sprite entry tag",
+                            Description: "",
+                            Args: [
+                                {
+                                    Name: "tag",
+                                    Note: "sprite tag",
+                                    Description: "",
+                                    Format: "%s",
+                                    Example: ""
+                                }
+                            ],
+                            Properties: null
+                        },
+                        {
+                            Name: "SPRITEINDEX",
+                            Note: "Sprite index",
+                            Description: "",
+                            Args: [
+                                {
+                                    Name: "index",
+                                    Note: "Sprite index",
+                                    Description: "",
+                                    Format: "%d",
+                                    Example: ""
+                                }
+                            ],
+                            Properties: null
+                        },
+                        {
+                            Name: "MINDISTANCE",
+                            Note: "Minimum distance to render LOD",
+                            Description: "",
+                            Args: [
+                                {
+                                    Name: "",
+                                    Note: "Minimum distance",
+                                    Description: "",
+                                    Format: "%0.8e",
+                                    Example: ""
+                                }
+                            ],
+                            Properties: null
+                        }
+                    ]
+                }
+            ]
         },
         {
-            name: "USERDATA",
-            description: "Unknown property 2.",
-            args: [
+            Name: "USEMODELCOLLIDER",
+            Note: "Ignored in RoF2. 0x80 flag. This gets ignored if ActorInst doesn't have it. Likely need to use hierarchysprite flag for things like boats",
+            Description: "",
+            Args: [
                 {
-                    name: "unk2",
-                    description: "Unknown property 2.",
-                    format: "%d",
-                },
+                    Name: "use model collider",
+                    Note: "0: no, 1: yes",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "USEMODELCOLLIDER",
-            description: "Ignored in RoF2. 0x80 flag. This gets ignored if ActorInst doesn't have it. Likely need to use hierarchysprite flag for things like boats.",
-            args: [
+            Name: "USERDATA",
+            Note: "Unknown property 2",
+            Description: "",
+            Args: [
                 {
-                    name: "use model collider",
-                    description: "0: no, 1: yes.",
-                    format: "%d",
-                },
+                    Name: "unk2",
+                    Note: "Unknown property 2",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
-        },
-    ],
-};
-
-export default actordef;
+            Properties: null
+        }
+    ]
+}

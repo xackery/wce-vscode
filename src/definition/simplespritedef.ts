@@ -1,122 +1,163 @@
+// Generated from quail, DO NOT EDIT
 import * as data from "./data";
 
 export const simplespritedef: data.DefinitionInfo = {
-    name: "SIMPLESPRITEDEF",
-    hasTag: true,
-    description: "A simple sprite definition.",
-    properties: [
+    Name: "SIMPLESPRITEDEF",
+    HasTag: true,
+    Note: "Wld Simple Sprite",
+    Description: "",
+    Properties: [
         {
-            name: "TAGINDEX",
-            description: "The index of the tag.",
-            args: [
+            Name: "TAGINDEX",
+            Note: "Index of tag",
+            Description: "",
+            Args: [
                 {
-                    name: "index",
-                    description: "The index of the tag.",
-                    format: "%d",
-                },
+                    Name: "index",
+                    Note: "Index of tag",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "VARIATION",
-            description: "The variation of the sprite.",
-            args: [
+            Name: "VARIATION",
+            Note: "Variation of tag",
+            Description: "",
+            Args: [
                 {
-                    name: "variation",
-                    description: "The variation of the sprite.",
-                    format: "%d",
-                },
+                    Name: "variation",
+                    Note: "Variation of tag",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "SKIPFRAMES?",
-            description: "The number of frames to skip.",
-            args: [
+            Name: "SKIPFRAMES?",
+            Note: "Should frames be skipped?",
+            Description: "",
+            Args: [
                 {
-                    name: "frames",
-                    description: "The number of frames to skip.",
-                    format: "%d",
-                },
+                    Name: "",
+                    Note: "0: false, 1: true",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "ANIMATED?",
-            description: "Is the sprite animated?",
-            args: [
+            Name: "ANIMATED?",
+            Note: "Is animated?",
+            Description: "",
+            Args: [
                 {
-                    name: "is animated",
-                    description: "0: no, 1: yes.",
-                    format: "%s",
-                },
+                    Name: "",
+                    Note: "0: false, 1: true",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "SLEEP?",
-            description: "The number of frames to sleep.",
-            args: [
+            Name: "SLEEP?",
+            Note: "Is there a sleep duration (in milliseconds)",
+            Description: "",
+            Args: [
                 {
-                    name: "frames",
-                    description: "The number of frames to sleep.",
-                    format: "%d",
-                },
+                    Name: "",
+                    Note: "NULL for non-value",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "CURRENTFRAME?",
-            description: "The current frame of the sprite.",
-            args: [
+            Name: "CURRENTFRAME?",
+            Note: "Current frame set?",
+            Description: "",
+            Args: [
                 {
-                    name: "frame",
-                    description: "The current frame of the sprite.",
-                    format: "%d",
-                },
+                    Name: "",
+                    Note: "NULL for non-value",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "NUMFRAMES",
-            isArrayNum: true,
-            description: "The number of frames in the sprite.",
-            args: [
+            Name: "NUMFRAMES",
+            Note: "Number of frames in simple sprite",
+            Description: "",
+            Args: [
                 {
-                    name: "frames",
-                    description: "The number of frames in the sprite.",
-                    format: "%d",
-                },
+                    Name: "count",
+                    Note: "Number of frames",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
-        },
-        {
-            name: "FRAME",
-            description: "A frame in the sprite.",
-            args: [
+            Properties: [
                 {
-                    name: "name",
-                    description: "The name of the frame.",
-                    format: "%s",
+                    Name: "FRAME",
+                    Note: "Frame tag",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "tag",
+                            Note: "Frame tag",
+                            Description: "",
+                            Format: "%s",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
                 },
-            ],
-        },
-        {
-            name: "NUMFILES",
-            description: "The number of files in the frame.",
-            args: [
                 {
-                    name: "files",
-                    description: "The number of files in the frame.",
-                    format: "%d",
-                },
-            ],
-        },
-        {
-            name: "FILE",
-            description: "A file in the frame.",
-            args: [
-                {
-                    name: "name",
-                    description: "The name of the file.",
-                    format: "%s",
-                },
-            ],
-        },
-    ],
-};
-
-export default simplespritedef;
+                    Name: "NUMFILES",
+                    Note: "Number of files",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "count",
+                            Note: "Count of files",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: [
+                        {
+                            Name: "FILE",
+                            Note: "Texture file name",
+                            Description: "",
+                            Args: [
+                                {
+                                    Name: "tag",
+                                    Note: "tag of file",
+                                    Description: "",
+                                    Format: "%s",
+                                    Example: ""
+                                }
+                            ],
+                            Properties: null
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

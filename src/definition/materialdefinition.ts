@@ -1,146 +1,196 @@
+// Generated from quail, DO NOT EDIT
 import * as data from "./data";
 
 export const materialdefinition: data.DefinitionInfo = {
-    name: "MATERIALDEFINITION",
-    hasTag: true,
-    description: "A material definition.",
-    properties: [
+    Name: "MATERIALDEFINITION",
+    HasTag: true,
+    Note: "Wld Material",
+    Description: "",
+    Properties: [
         {
-            name: "TAGINDEX",
-            description: "The index of the tag.",
-            args: [
+            Name: "TAGINDEX",
+            Note: "For tag variations, starts at 0, increases by 1",
+            Description: "",
+            Args: [
                 {
-                    name: "index",
-                    description: "The index of the tag.",
-                    format: "%d",
-                },
+                    Name: "index",
+                    Note: "Index of tag",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "VARIATION",
-            description: "The variation of the material.",
-            args: [
+            Name: "VARIATION",
+            Note: "For variations",
+            Description: "",
+            Args: [
                 {
-                    name: "variation",
-                    description: "The variation of the material.",
-                    format: "%d",
-                },
+                    Name: "index",
+                    Note: "Variation of tag",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "RENDERMETHOD",
-            description: "The render method of the material.",
-            args: [
+            Name: "RENDERMETHOD",
+            Note: "Method for rendering",
+            Description: "",
+            Args: [
                 {
-                    name: "method",
-                    description: "The render method of the material.",
-                    format: "%s",
-                },
+                    Name: "method",
+                    Note: "Rendering method",
+                    Description: "",
+                    Format: "%s",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "RGBPEN",
-            description: "The RGB pen of the material.",
-            args: [
+            Name: "RGBPEN",
+            Note: "RGB Colorizing",
+            Description: "",
+            Args: [
                 {
-                    name: "red",
-                    description: "The red value of the RGB pen.",
-                    format: "%d",
+                    Name: "r",
+                    Note: "Red",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
                 },
                 {
-                    name: "green",
-                    description: "The green value of the RGB pen.",
-                    format: "%d",
+                    Name: "g",
+                    Note: "Green",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
                 },
                 {
-                    name: "blue",
-                    description: "The blue value of the RGB pen.",
-                    format: "%d",
+                    Name: "b",
+                    Note: "Blue",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
                 },
                 {
-                    name: "alpha",
-                    description: "The alpha value of the RGB pen.",
-                    format: "%d",
-                },
+                    Name: "a",
+                    Note: "Alpha",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "BRIGHTNESS",
-            description: "The brightness of the material.",
-            args: [
+            Name: "BRIGHTNESS",
+            Note: "Color brightness",
+            Description: "",
+            Args: [
                 {
-                    name: "brightness",
-                    description: "The brightness of the material.",
-                    format: "%0.8f",
-                },
+                    Name: "amount",
+                    Note: "Brightness amount",
+                    Description: "",
+                    Format: "%0.8e",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "SCALEDAMBIENT",
-            description: "The scaled ambient of the material.",
-            args: [
+            Name: "SCALEDAMBIENT",
+            Note: "Scaled ambient amount",
+            Description: "",
+            Args: [
                 {
-                    name: "ambient",
-                    description: "The scaled ambient of the material.",
-                    format: "%0.8f",
-                },
+                    Name: "amount",
+                    Note: "Scaled ambient amount",
+                    Description: "",
+                    Format: "%0.8e",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "SIMPLESPRITEINST",
-            description: "A simple sprite instance.",
-            args: [],
+            Name: "SIMPLESPRITEINST",
+            Note: "Simple sprite instance section",
+            Description: "",
+            Args: null,
+            Properties: null
         },
         {
-            name: "TAG",
-            description: "A tag.",
-            args: [
+            Name: "TAG",
+            Note: "Simple sprite instance tag",
+            Description: "",
+            Args: [
                 {
-                    name: "tag",
-                    description: "The tag.",
-                    format: "%s",
-                },
+                    Name: "tag",
+                    Note: "Simple sprite instance tag",
+                    Description: "",
+                    Format: "%s",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "HEXFIFTYFLAG",
-            description: "The hex fifty flag.",
-            args: [
+            Name: "HEXFIFTYFLAG",
+            Note: "Hex fifty flag",
+            Description: "",
+            Args: [
                 {
-                    name: "flag",
-                    description: "The hex fifty flag.",
-                    format: "%d",
-                },
+                    Name: "flag",
+                    Note: "Hex fifty flag",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "PAIRS?",
-            description: "The number of pairs.",
-            args: [
+            Name: "PAIRS?",
+            Note: "Pairs of flags?",
+            Description: "",
+            Args: [
                 {
-                    name: "pairs",
-                    description: "The number of pairs.",
-                    format: "%d",
+                    Name: "pairs",
+                    Note: "Pairs 0",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
                 },
                 {
-                    name: "value",
-                    description: "The value of the pairs.",
-                    format: "%0.8f",
-                },
+                    Name: "pairs",
+                    Note: "Pairs 1",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "DOUBLESIDED",
-            description: "Is the material double sided?",
-            args: [
+            Name: "DOUBLESIDED",
+            Note: "Is material double sided?",
+            Description: "",
+            Args: [
                 {
-                    name: "is double sided",
-                    description: "0: no, 1: yes.",
-                    format: "%s",
-                },
+                    Name: "",
+                    Note: "0: False, 1: True",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
-        },
-    ],
-};
-
-export default materialdefinition;
+            Properties: null
+        }
+    ]
+}

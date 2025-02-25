@@ -1,14 +1,14 @@
 // Generated from quail, DO NOT EDIT
 import * as data from "./data";
 
-export const trackinstance: data.DefinitionInfo = {
-    Name: "TRACKINSTANCE",
+export const rgbdeformationtrackdef: data.DefinitionInfo = {
+    Name: "RGBDEFORMATIONTRACKDEF",
     HasTag: true,
-    Note: "Wld Track",
+    Note: "Wld RGB ",
     Description: "",
     Properties: [
         {
-            Name: "TAGINDEX",
+            Name: "DATA1",
             Note: "",
             Description: "",
             Args: [
@@ -23,22 +23,7 @@ export const trackinstance: data.DefinitionInfo = {
             Properties: null
         },
         {
-            Name: "DEFINITION",
-            Note: "",
-            Description: "",
-            Args: [
-                {
-                    Name: "",
-                    Note: "",
-                    Description: "",
-                    Format: "%s",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "DEFINITIONINDEX",
+            Name: "DATA2",
             Note: "",
             Description: "",
             Args: [
@@ -53,37 +38,7 @@ export const trackinstance: data.DefinitionInfo = {
             Properties: null
         },
         {
-            Name: "INTERPOLATE",
-            Note: "deprecated, ignored in RoF2",
-            Description: "",
-            Args: [
-                {
-                    Name: "",
-                    Note: "deprecated, ignored in RoF2",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "REVERSE",
-            Note: "deprecated, ignored in RoF2",
-            Description: "",
-            Args: [
-                {
-                    Name: "",
-                    Note: "deprecated, ignored in RoF2",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "SLEEP?",
+            Name: "SLEEP",
             Note: "",
             Description: "",
             Args: [
@@ -96,6 +51,80 @@ export const trackinstance: data.DefinitionInfo = {
                 }
             ],
             Properties: null
+        },
+        {
+            Name: "DATA4",
+            Note: "",
+            Description: "",
+            Args: [
+                {
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
+            ],
+            Properties: null
+        },
+        {
+            Name: "RGBDEFORMATIONFRAME",
+            Note: "",
+            Description: "",
+            Args: null,
+            Properties: null
+        },
+        {
+            Name: "NUMRGBAS",
+            Note: "",
+            Description: "",
+            Args: [
+                {
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
+            ],
+            Properties: [
+                {
+                    Name: "RGBA",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                }
+            ]
         }
     ]
 }

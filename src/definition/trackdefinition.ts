@@ -1,92 +1,186 @@
+// Generated from quail, DO NOT EDIT
 import * as data from "./data";
 
 export const trackdefinition: data.DefinitionInfo = {
-    name: "TRACKDEFINITION",
-    hasTag: true,
-    description: "A track definition.",
-    properties: [
+    Name: "TRACKDEFINITION",
+    HasTag: true,
+    Note: "Wld Track",
+    Description: "",
+    Properties: [
         {
-            name: "TAGINDEX",
-            description: "The index of the tag.",
-            args: [
+            Name: "TAGINDEX",
+            Note: "",
+            Description: "",
+            Args: [
                 {
-                    name: "index",
-                    description: "The index of the tag.",
-                    format: "%d",
-                },
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: null
         },
         {
-            name: "NUMFRAMES",
-            isArrayNum: true,
-            description: "The number of frames in the track.",
-            args: [
+            Name: "NUMFRAMES",
+            Note: "",
+            Description: "",
+            Args: [
                 {
-                    name: "num frames",
-                    description: "The number of frames.",
-                    format: "%d",
-                },
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
+            Properties: [
+                {
+                    Name: "FRAME",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                }
+            ]
         },
         {
-            name: "FRAME",
-            description: "A frame in the track.",
-            args: [
+            Name: "NUMLEGACYFRAMES",
+            Note: "",
+            Description: "",
+            Args: [
                 {
-                    name: "scale",
-                    description: "The scale of the frame.",
-                    format: "%d",
-                },
-                {
-                    name: "x-loc",
-                    description: "The x location of the frame.",
-                    format: "%d",
-                },
-                {
-                    name: "y-loc",
-                    description: "The y location of the frame.",
-                    format: "%d",
-                },
-                {
-                    name: "z-loc",
-                    description: "The z location of the frame.",
-                    format: "%d",
-                },
-                {
-                    name: "w-rot",
-                    description: "The w rotation of the frame.",
-                    format: "%d",
-                },
-                {
-                    name: "x-rot",
-                    description: "The x rotation of the frame.",
-                    format: "%d",
-                },
-                {
-                    name: "y-rot",
-                    description: "The y rotation of the frame.",
-                    format: "%d",
-                },
-                {
-                    name: "z-rot",
-                    description: "The z rotation of the frame.",
-                    format: "%d",
-                },
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
             ],
-        },
-        {
-            name: "NUMLEGACYFRAMES",
-            isArrayNum: true,
-            description: "The number of legacy frames in the track.",
-            args: [
+            Properties: [
                 {
-                    name: "num legacy frames",
-                    description: "The number of legacy frames.",
-                    format: "%d",
-                },
-            ],
-        },
-    ],
-};
-
-export default trackdefinition;
+                    Name: "LEGACYFRAME",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                }
+            ]
+        }
+    ]
+}

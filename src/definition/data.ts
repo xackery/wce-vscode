@@ -1,20 +1,24 @@
 
 export interface DefinitionInfo {
-    name: string;
-    hasTag?: boolean;
-    description: string;
-    properties: PropertyInfo[]; // Map SOMEDEF to its properties and args
+    Name: string;
+    HasTag?: boolean;
+    Note: string;
+    Description: string;
+    Properties: PropertyInfo[];
 }
 
 export interface PropertyInfo {
-    name: string;
-    isArrayNum?: boolean;
-    args: ArgInfo[];
-    description: string;
+    Name: string;
+    Args: ArgInfo[] | null;
+    Note: string;
+    Description: string;
+    Properties: PropertyInfo[] | null;
 }
 
 export interface ArgInfo {
-    name: string;
-    description: string;
-    format: string;
+    Name: string;
+    Note: string;
+    Description: string;
+    Format: string;
+    Example: string;
 }

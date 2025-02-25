@@ -1,29 +1,14 @@
 // Generated from quail, DO NOT EDIT
 import * as data from "./data";
 
-export const trackinstance: data.DefinitionInfo = {
-    Name: "TRACKINSTANCE",
+export const pointlight: data.DefinitionInfo = {
+    Name: "POINTLIGHT",
     HasTag: true,
-    Note: "Wld Track",
+    Note: "Wld Point Light",
     Description: "",
     Properties: [
         {
-            Name: "TAGINDEX",
-            Note: "",
-            Description: "",
-            Args: [
-                {
-                    Name: "",
-                    Note: "",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "DEFINITION",
+            Name: "LIGHT",
             Note: "",
             Description: "",
             Args: [
@@ -38,7 +23,7 @@ export const trackinstance: data.DefinitionInfo = {
             Properties: null
         },
         {
-            Name: "DEFINITIONINDEX",
+            Name: "STATIC",
             Note: "",
             Description: "",
             Args: [
@@ -53,37 +38,22 @@ export const trackinstance: data.DefinitionInfo = {
             Properties: null
         },
         {
-            Name: "INTERPOLATE",
-            Note: "deprecated, ignored in RoF2",
+            Name: "STATICINFLUENCE",
+            Note: "",
             Description: "",
             Args: [
                 {
                     Name: "",
-                    Note: "deprecated, ignored in RoF2",
+                    Note: "",
                     Description: "",
-                    Format: "%d",
+                    Format: "%s",
                     Example: ""
                 }
             ],
             Properties: null
         },
         {
-            Name: "REVERSE",
-            Note: "deprecated, ignored in RoF2",
-            Description: "",
-            Args: [
-                {
-                    Name: "",
-                    Note: "deprecated, ignored in RoF2",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
-                }
-            ],
-            Properties: null
-        },
-        {
-            Name: "SLEEP?",
+            Name: "HASREGIONS",
             Note: "",
             Description: "",
             Args: [
@@ -92,6 +62,50 @@ export const trackinstance: data.DefinitionInfo = {
                     Note: "",
                     Description: "",
                     Format: "%d",
+                    Example: ""
+                }
+            ],
+            Properties: null
+        },
+        {
+            Name: "XYZ",
+            Note: "",
+            Description: "",
+            Args: [
+                {
+                    Name: "x",
+                    Note: "",
+                    Description: "",
+                    Format: "%0.8e",
+                    Example: ""
+                },
+                {
+                    Name: "y",
+                    Note: "",
+                    Description: "",
+                    Format: "%0.8e",
+                    Example: ""
+                },
+                {
+                    Name: "z",
+                    Note: "",
+                    Description: "",
+                    Format: "%0.8e",
+                    Example: ""
+                }
+            ],
+            Properties: null
+        },
+        {
+            Name: "RADIUSOFINFLUENCE",
+            Note: "",
+            Description: "",
+            Args: [
+                {
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%0.8e",
                     Example: ""
                 }
             ],
