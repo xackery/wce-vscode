@@ -7,6 +7,7 @@ export const hierarchicalspritedef: data.DefinitionInfo = {
     properties: [
         {
             name: "NUMDAGS",
+            isArrayNum: true,
             description: "The number of DAGs in the sprite.",
             args: [
                 {
@@ -18,6 +19,7 @@ export const hierarchicalspritedef: data.DefinitionInfo = {
         },
         {
             name: "NUMATTACHEDSKINS",
+            isArrayNum: true,
             description: "The number of attached skins in the sprite.",
             args: [
                 {

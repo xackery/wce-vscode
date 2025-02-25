@@ -18,6 +18,7 @@ export const trackdefinition: data.DefinitionInfo = {
         },
         {
             name: "NUMFRAMES",
+            isArrayNum: true,
             description: "The number of frames in the track.",
             args: [
                 {
@@ -75,6 +76,7 @@ export const trackdefinition: data.DefinitionInfo = {
         },
         {
             name: "NUMLEGACYFRAMES",
+            isArrayNum: true,
             description: "The number of legacy frames in the track.",
             args: [
                 {

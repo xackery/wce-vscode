@@ -73,6 +73,7 @@ export const simplespritedef: data.DefinitionInfo = {
         },
         {
             name: "NUMFRAMES",
+            isArrayNum: true,
             description: "The number of frames in the sprite.",
             args: [
                 {

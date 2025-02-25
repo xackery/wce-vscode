@@ -7,6 +7,7 @@ export const materialpalette: data.DefinitionInfo = {
     properties: [
         {
             name: "NUMMATERIALS",
+            isArrayNum: true,
             description: "The number of materials in the palette.",
             args: [
                 {

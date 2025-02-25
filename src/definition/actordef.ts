@@ -92,6 +92,7 @@ export const actordef: data.DefinitionInfo = {
         },
         {
             name: "NUMACTIONS",
+            isArrayNum: true,
             description: "The number of actions for the actor.",
             args: [
                 {
@@ -102,7 +103,7 @@ export const actordef: data.DefinitionInfo = {
             ],
         },
         {
-            name: "UNK2",
+            name: "USERDATA",
             description: "Unknown property 2.",
             args: [
                 {
@@ -113,11 +114,11 @@ export const actordef: data.DefinitionInfo = {
             ],
         },
         {
-            name: "HASEIGHTYFLAG",
-            description: "Does the actor have the eighty flag?",
+            name: "USEMODELCOLLIDER",
+            description: "Ignored in RoF2. 0x80 flag. This gets ignored if ActorInst doesn't have it. Likely need to use hierarchysprite flag for things like boats.",
             args: [
                 {
-                    name: "has eighty flag",
+                    name: "use model collider",
                     description: "0: no, 1: yes.",
                     format: "%d",
                 },

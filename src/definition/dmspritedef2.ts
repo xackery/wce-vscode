@@ -39,6 +39,7 @@ export const dmspritedef2: data.DefinitionInfo = {
         },
         {
             name: "NUMVERTICES",
+            isArrayNum: true,
             description: "The number of vertices in the sprite.",
             args: [
                 {
@@ -71,6 +72,7 @@ export const dmspritedef2: data.DefinitionInfo = {
         },
         {
             name: "NUMUVS",
+            isArrayNum: true,
             description: "The number of UVs in the sprite.",
             args: [
                 {
@@ -82,6 +84,7 @@ export const dmspritedef2: data.DefinitionInfo = {
         },
         {
             name: "NUMVERTEXNORMALS",
+            isArrayNum: true,
             description: "The number of vertex normals in the sprite.",
             args: [
                 {
@@ -93,6 +96,7 @@ export const dmspritedef2: data.DefinitionInfo = {
         },
         {
             name: "NUMVERTEXCOLORS",
+            isArrayNum: true,
             description: "The number of vertex colors in the sprite.",
             args: [
                 {
@@ -153,6 +157,7 @@ export const dmspritedef2: data.DefinitionInfo = {
         },
         {
             name: "NUMFACE2S",
+            isArrayNum: true,
             description: "The number of face2s in the sprite.",
             args: [
                 {
@@ -164,6 +169,7 @@ export const dmspritedef2: data.DefinitionInfo = {
         },
         {
             name: "NUMMESHOPS",
+            isArrayNum: true,
             description: "The number of mesh operations in the sprite.",
             args: [
                 {
