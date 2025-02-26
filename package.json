@@ -16,10 +16,31 @@
   "contributes": {
     "commands": [
       {
-        "command": "wce-vscode.helloWorld",
-        "title": "Hello World"
+        "command": "wce-vscode.convert",
+        "title": "Quail Convert"
       }
     ],
+    "configuration": {
+      "type": "object",
+      "title": "WCE Configuration",
+      "properties": {
+        "wce-vscode.quailPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to Quail"
+        },
+        "wce-vscode.convertTargetPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to convert file to (Suggested to set in a workspace inside a .quail folder)"
+        },
+        "wce-vscode.convertOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Run Convert on save"
+        }
+      }
+    },
     "languages": [
       {
         "id": "wce",

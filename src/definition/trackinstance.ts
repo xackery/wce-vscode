@@ -23,7 +23,7 @@ export const trackinstance: data.DefinitionInfo = {
             Properties: null
         },
         {
-            Name: "DEFINITION",
+            Name: "SPRITE",
             Note: "",
             Description: "",
             Args: [
@@ -38,7 +38,7 @@ export const trackinstance: data.DefinitionInfo = {
             Properties: null
         },
         {
-            Name: "DEFINITIONINDEX",
+            Name: "SPRITEINDEX",
             Note: "",
             Description: "",
             Args: [

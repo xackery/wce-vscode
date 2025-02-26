@@ -11,6 +11,8 @@ import { eqglayerdef } from './eqglayerdef';
 import { eqgmodeldef } from './eqgmodeldef';
 import { eqgskinnedmodeldef } from './eqgskinnedmodeldef';
 import { eqgterdef } from './eqgterdef';
+import { eqgparticlepointdef } from './eqgparticlepointdef';
+import { eqgparticlerenderdef } from './eqgparticlerenderdef';
 import { globalambientlightdef } from './globalambientlightdef';
 import { hierarchicalspritedef } from './hierarchicalspritedef';
 import { lightdefinition } from './lightdefinition';
@@ -57,6 +59,10 @@ export function definitionByName(name: string): data.DefinitionInfo | null {
             return eqgskinnedmodeldef;
         case eqgterdef.Name:
             return eqgterdef;
+        case eqgparticlepointdef.Name:
+            return eqgparticlepointdef;
+        case eqgparticlerenderdef.Name:
+            return eqgparticlerenderdef;
         case globalambientlightdef.Name:
             return globalambientlightdef;
         case hierarchicalspritedef.Name:

@@ -8,7 +8,7 @@ export const actorinst: data.DefinitionInfo = {
     Description: "",
     Properties: [
         {
-            Name: "DEFINITION",
+            Name: "SPRITE",
             Note: "Reference to the actor's sprite tag",
             Description: "",
             Args: [

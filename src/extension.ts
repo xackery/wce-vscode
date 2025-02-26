@@ -2,6 +2,8 @@ import * as vscode from "vscode";
 
 import * as data from "./definition/data";
 import definitionByName from "./definition/definition";
+import { log } from "console";
+import * as child_process from "child_process";
 
 interface HoverEntry {
 	position: vscode.Range;
@@ -65,10 +67,10 @@ function parseLine(line: string) {
 	if (argumentWord.length === 0) return;
 
 	if (argumentWord == "//") {
-		semantics.push({
+		/* semantics.push({
 			position: new vscode.Range(new vscode.Position(lineNumber, posStart), new vscode.Position(lineNumber, line.length)),
 			tokenType: "comment",
-		});
+		}); */
 
 		return;
 	}
@@ -98,10 +100,10 @@ function parseArg(line: string): boolean {
 
 	if (argumentWord.length === 0) return false;
 	if (argumentWord.startsWith("//")) {
-		semantics.push({
+		/* semantics.push({
 			position: new vscode.Range(new vscode.Position(lineNumber, posStart), new vscode.Position(lineNumber, line.length)),
 			tokenType: "comment",
-		});
+		}); */
 		return false;
 	}
 
@@ -115,13 +117,13 @@ function wordRangeCurrent(): vscode.Range {
 
 
 function parseDefinition(line: string) {
-	if (argumentWord.startsWith("//")) {
+	/* if (argumentWord.startsWith("//")) {
 		semantics.push({
 			position: new vscode.Range(new vscode.Position(lineNumber, posStart), new vscode.Position(lineNumber, line.length)),
 			tokenType: "comment",
 		});
 		return;
-	}
+	} */
 
 
 	switch (argumentWord) {
@@ -173,9 +175,15 @@ function parseDefinition(line: string) {
 	propCount = 1;
 	propMax = 1;
 
+
+	let hoverText = currentDef.Note;
+	if (currentDef.Description !== "") {
+		hoverText += "\n" + currentDef.Description;
+	}
+
 	hovers.push({
+		hoverText: hoverText,
 		position: wordRangeCurrent(),
-		hoverText: currentDef.Note + "\n" + currentDef.Description,
 		type: "definition",
 	});
 
@@ -240,7 +248,10 @@ function parseProperty(line: string) {
 		return;
 	}
 
-	let hoverText = prop.Description;
+	let hoverText = prop.Note;
+	if (prop.Description !== "") {
+		hoverText += "\n" + prop.Description;
+	}
 	if (propMax > 1) {
 		let propIndex = propMax - propCount - 1;
 		hoverText = `#${propIndex}: ${hoverText}`;
@@ -426,22 +437,111 @@ const diagnosticCollection = vscode.languages.createDiagnosticCollection("wce");
  * Activate the extension.
  */
 export function activate(context: vscode.ExtensionContext) {
+	const semanticTokensProvider = new WCESemanticTokensProvider();
+	const legend = new vscode.SemanticTokensLegend(["keyword", "property", "number", "null", "string", "comment"]);
+
 	context.subscriptions.push(
 		vscode.workspace.onDidOpenTextDocument(parseDocument),
 		vscode.workspace.onDidChangeTextDocument((e) => parseDocument(e.document)),
+		vscode.workspace.onDidChangeTextDocument((e) => {
+			parseDocument(e.document);
+			vscode.languages.registerDocumentSemanticTokensProvider(
+				{ language: "wce" },
+				semanticTokensProvider,
+				legend
+			);
+		}),
 		vscode.window.onDidChangeActiveTextEditor((editor) => {
 			if (editor) {
 				parseDocument(editor.document);
+				vscode.languages.registerDocumentSemanticTokensProvider(
+					{ language: "wce" },
+					semanticTokensProvider,
+					legend
+				);
 			}
 		}),
 		hoverProvider,
 		vscode.workspace.onDidCloseTextDocument((doc) => diagnosticCollection.delete(doc.uri)),
 		vscode.languages.registerDocumentSemanticTokensProvider(
 			{ language: "wce" },
-			new WCESemanticTokensProvider(),
-			new vscode.SemanticTokensLegend(["keyword", "property", "number", "null", "string", "comment"])
+			semanticTokensProvider,
+			legend
 		),
+		vscode.commands.registerCommand("wce-vscode.convert", () => {
+			runConvert();
+		}),
+		vscode.workspace.onDidSaveTextDocument((doc) => {
+			const config = vscode.workspace.getConfiguration("wce-vscode");
+			const isConvertOnSave = config.get<boolean>("convertOnSave", false);
+			if (!isConvertOnSave) {
+				return;
+			}
+
+			const quailPath = config.get<string>("quailPath", "");
+			if (quailPath === "") {
+				return;
+			}
+
+
+			if (doc.languageId !== "wce") {
+				return;
+			}
+			runConvert();
+		})
 	);
 }
 
 export function deactivate() { }
+
+function runConvert() {
+	const config = vscode.workspace.getConfiguration("wce-vscode");
+	const quailPath = config.get<string>("quailPath", "");
+	if (quailPath === "") {
+		vscode.window.showErrorMessage("Quail path is not set. Configure with wce-vscode.quailPath");
+		return;
+	}
+
+	if (!vscode.workspace.fs.stat(vscode.Uri.file(quailPath)).then(() => true).then(undefined, () => false)) {
+		vscode.window.showErrorMessage("Executable path is not a valid file. Please check the path.");
+		return;
+	}
+
+	const targetPath = config.get<string>("convertTargetPath", "");
+	if (targetPath === "") {
+		vscode.window.showErrorMessage("Target path is not set. Configure with wce-vscode.convertTargetPath");
+		return;
+	}
+
+	const targetDir = vscode.Uri.file(targetPath).with({ path: vscode.Uri.file(targetPath).path.replace(/\/[^\/]*$/, '') });
+
+	vscode.workspace.fs.stat(targetDir).then(() => {
+		// Directory exists
+	}, () => {
+		vscode.window.showErrorMessage("Target directory does not exist. Please check the path.");
+		return;
+	});
+
+	let sourcePath = vscode.workspace.workspaceFolders?.[0].uri.fsPath
+	if (sourcePath === undefined) {
+		//	vscode.window.showErrorMessage("No workspace file open.");
+		//	return;
+	}
+
+
+	let command = `${quailPath} convert ${sourcePath} ${targetPath}`;
+	vscode.window.showInformationMessage(`Running: ${command}`);
+	const options = { cwd: vscode.workspace.workspaceFolders?.[0].uri.fsPath };
+
+	child_process.exec(command, options, (error, stdout, stderr) => {
+		if (error) {
+			vscode.window.showErrorMessage(`Error: ${error.message}: ${stdout}`);
+			return;
+		}
+		if (stderr) {
+			vscode.window.showErrorMessage(`Stderr: ${stderr}`);
+			return;
+		}
+		vscode.window.showInformationMessage(`Output: ${stdout}`);
+	});
+}

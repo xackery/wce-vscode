@@ -299,7 +299,7 @@ export const dmspritedef2: data.DefinitionInfo = {
             Properties: null
         },
         {
-            Name: "DEFINITION",
+            Name: "SPRITE",
             Note: "The definition reference",
             Description: "",
             Args: [
