@@ -140,7 +140,7 @@ export const dmspritedefinition: data.DefinitionInfo = {
             ],
             Properties: [
                 {
-                    Name: "XYZ",
+                    Name: "VXYZ",
                     Note: "The coordinates of a vertex",
                     Description: "",
                     Args: [
@@ -223,7 +223,7 @@ export const dmspritedefinition: data.DefinitionInfo = {
             ],
             Properties: [
                 {
-                    Name: "XYZ",
+                    Name: "NXYZ",
                     Note: "The coordinates of a texture normal",
                     Description: "",
                     Args: [

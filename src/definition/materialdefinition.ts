@@ -164,15 +164,8 @@ export const materialdefinition: data.DefinitionInfo = {
                     Name: "pairs",
                     Note: "Pairs 0",
                     Description: "",
-                    Format: "%d",
-                    Example: ""
-                },
-                {
-                    Name: "pairs",
-                    Note: "Pairs 1",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
+                    Format: "%d...",
+                    Example: "1 2"
                 }
             ],
             Properties: null

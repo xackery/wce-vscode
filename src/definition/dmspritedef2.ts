@@ -66,7 +66,7 @@ export const dmspritedef2: data.DefinitionInfo = {
             ],
             Properties: [
                 {
-                    Name: "XYZ",
+                    Name: "VXYZ",
                     Note: "The coordinates of a vertex",
                     Description: "",
                     Args: [
@@ -149,7 +149,7 @@ export const dmspritedef2: data.DefinitionInfo = {
             ],
             Properties: [
                 {
-                    Name: "XYZ",
+                    Name: "NXYZ",
                     Note: "The coordinates of a texture normal",
                     Description: "",
                     Args: [
@@ -287,15 +287,7 @@ export const dmspritedef2: data.DefinitionInfo = {
             Name: "POLYHEDRON",
             Note: "The polyhedron definition",
             Description: "",
-            Args: [
-                {
-                    Name: "definition",
-                    Note: "The definition of the polyhedron",
-                    Description: "",
-                    Format: "%s",
-                    Example: ""
-                }
-            ],
+            Args: null,
             Properties: null
         },
         {
@@ -445,25 +437,11 @@ export const dmspritedef2: data.DefinitionInfo = {
             Description: "",
             Args: [
                 {
-                    Name: "group size",
+                    Name: "group entries",
                     Note: "The size of the group",
                     Description: "",
-                    Format: "%d",
-                    Example: ""
-                },
-                {
-                    Name: "group entry 1",
-                    Note: "The data of the group",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
-                },
-                {
-                    Name: "group entry 2",
-                    Note: "The data of the group",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
+                    Format: "%d...",
+                    Example: "1 1 1"
                 }
             ],
             Properties: null
@@ -477,22 +455,8 @@ export const dmspritedef2: data.DefinitionInfo = {
                     Name: "group size",
                     Note: "The size of the group",
                     Description: "",
-                    Format: "%d",
-                    Example: ""
-                },
-                {
-                    Name: "group entry 1",
-                    Note: "The data of the group",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
-                },
-                {
-                    Name: "group entry 2",
-                    Note: "The data of the group",
-                    Description: "",
-                    Format: "%d",
-                    Example: ""
+                    Format: "%d...",
+                    Example: "1 1 1"
                 }
             ],
             Properties: null

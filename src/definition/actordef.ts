@@ -240,14 +240,14 @@ export const actordef: data.DefinitionInfo = {
         },
         {
             Name: "USERDATA",
-            Note: "Unknown property 2",
+            Note: "User Data",
             Description: "",
             Args: [
                 {
-                    Name: "unk2",
-                    Note: "Unknown property 2",
+                    Name: "USERDATA",
+                    Note: "User Data",
                     Description: "",
-                    Format: "%d",
+                    Format: "%s",
                     Example: ""
                 }
             ],
