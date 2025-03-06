@@ -300,7 +300,7 @@ function parseProperty(line: string) {
 						propMax = parseInt(argumentWord, 10) + 1;
 					}
 					break;
-				case "%0.8f":
+				case "%0.8e":
 					// 0.00000000e+00
 					if (!argumentWord.match(/\d\.\d{8}e[\+\-]\d{2}/)) expected = "float";
 					break;
