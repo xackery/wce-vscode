@@ -53,6 +53,13 @@
         ],
         "configuration": "./language-configuration.json"
       }
+    ],
+    "grammars": [
+      {
+        "language": "wce",
+        "scopeName": "source.wce",
+        "path": "./syntaxes/wce.tmLanguage.json"
+      }
     ]
   },
   "repository": {

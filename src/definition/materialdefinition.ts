@@ -141,6 +141,21 @@ export const materialdefinition: data.DefinitionInfo = {
             Properties: null
         },
         {
+            Name: "SIMPLESPRITETAGINDEX",
+            Note: "",
+            Description: "",
+            Args: [
+                {
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
+            ],
+            Properties: null
+        },
+        {
             Name: "HEXFIFTYFLAG",
             Note: "Hex fifty flag",
             Description: "",

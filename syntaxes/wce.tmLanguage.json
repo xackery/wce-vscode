@@ -1,0 +1,51 @@
+{
+    "scopeName": "source.wce",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#properties"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "match": "//.*$",
+            "name": "comment.line.double-slash.wce"
+        },
+        "keywords": {
+            "match": "\\b(INCLUDE|WORLDDEF|ZONEDEF|OBJECTDEF)\\b",
+            "name": "keyword.control.wce"
+        },
+        "strings": {
+            "match": "\"[^\"]*\"",
+            "name": "string.quoted.double.wce"
+        },
+        "numbers": {
+            "match": "\\b[-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?\\b",
+            "name": "constant.numeric.wce"
+        },
+        "properties": {
+            "match": "\\b[A-Z][A-Z0-9_]*\\b(?!\\s*:)",
+            "name": "keyword.control.wce"
+        }
+    },
+    "contributes": {
+        "grammars": [
+            {
+                "language": "wce",
+                "scopeName": "source.wce",
+                "path": "./syntaxes/wce.tmLanguage.json"
+            }
+        ]
+    }
+}

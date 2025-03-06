@@ -20,7 +20,6 @@ interface TokenEntry {
 	tokenType: string;
 }
 
-let semantics: TokenEntry[] = [];
 let currentDef: data.DefinitionInfo | null = null;
 let propIndex = 0;
 let propCount = 1; // this value is tweaked when a NUM prop sets it
@@ -35,7 +34,6 @@ let argumentIndex: number = 0; // this is the current argument index
 function parseDocument(document: vscode.TextDocument) {
 	if (document.languageId != "wce") return;
 	hovers = [];
-	semantics = [];
 	diagnostics = [];
 	currentDef = null;
 
@@ -136,11 +134,6 @@ function parseDefinition(line: string) {
 				type: "definition",
 			});
 
-			semantics.push({
-				position: wordRangeCurrent(),
-				tokenType: "keyword",
-			});
-
 			if (!parseArg(line)) {
 				diagnostics.push({
 					message: "include path is missing",
@@ -189,11 +182,6 @@ function parseDefinition(line: string) {
 		type: "definition",
 	});
 
-	semantics.push({
-		position: wordRangeCurrent(),
-		tokenType: "keyword",
-	});
-
 
 	if (currentDef.HasTag) {
 		if (!parseArg(line)) {
@@ -220,11 +208,6 @@ function parseDefinition(line: string) {
 			type: "definition",
 		});
 
-
-		semantics.push({
-			position: wordRangeCurrent(),
-			tokenType: "string",
-		});
 	}
 	return;
 }
@@ -264,10 +247,7 @@ function parseProperty(line: string) {
 		position: wordRangeCurrent(),
 		type: "property",
 	});
-	semantics.push({
-		position: wordRangeCurrent(),
-		tokenType: "property",
-	});
+
 
 	let propName = argumentWord;
 
@@ -309,25 +289,13 @@ function parseProperty(line: string) {
 			if (!propName.endsWith("?")) {
 				expected = "non-NULL";
 			}
-			semantics.push({
-				position: wordRangeCurrent(),
-				tokenType: "number",
-			});
 		} else {
 			switch (argFormat) {
 				case "%s":
 					if (typeof argumentWord !== "string") expected = "string";
-					semantics.push({
-						position: wordRangeCurrent(),
-						tokenType: "string",
-					});
 					break;
 				case "%d":
 					if (isNaN(parseInt(argumentWord, 10))) expected = "integer";
-					semantics.push({
-						position: wordRangeCurrent(),
-						tokenType: "number",
-					});
 					if (prop.Properties != null && prop.Properties.length > 0) {
 						propMax = parseInt(argumentWord, 10) + 1;
 					}
@@ -335,25 +303,13 @@ function parseProperty(line: string) {
 				case "%0.8f":
 					// 0.00000000e+00
 					if (!argumentWord.match(/\d\.\d{8}e[\+\-]\d{2}/)) expected = "float";
-					semantics.push({
-						position: wordRangeCurrent(),
-						tokenType: "number",
-					});
 					break;
 
 				case "%f":
 					if (!isNaN(parseFloat(argumentWord))) expected = "float";
-					semantics.push({
-						position: wordRangeCurrent(),
-						tokenType: "number",
-					});
 					break;
 				default:
 					expected = "unknown";
-					semantics.push({
-						position: wordRangeCurrent(),
-						tokenType: "unknown",
-					});
 					break;
 			}
 		}
@@ -416,30 +372,12 @@ const hoverProvider = vscode.languages.registerHoverProvider("wce", {
 	},
 });
 
-const legend = new vscode.SemanticTokensLegend(["keyword", "property", "number", "null", "string", "comment"]);
-
-class WCESemanticTokensProvider implements vscode.DocumentSemanticTokensProvider {
-	provideDocumentSemanticTokens(
-		document: vscode.TextDocument
-	): vscode.ProviderResult<vscode.SemanticTokens> {
-		const builder = new vscode.SemanticTokensBuilder(legend);
-
-		for (const entry of semantics) {
-			builder.push(entry.position, entry.tokenType);
-		}
-
-		return builder.build();
-	}
-}
-
-
 const diagnosticCollection = vscode.languages.createDiagnosticCollection("wce");
 
 /**
  * Activate the extension.
  */
 export function activate(context: vscode.ExtensionContext) {
-	const semanticTokensProvider = new WCESemanticTokensProvider();
 	const legend = new vscode.SemanticTokensLegend(["keyword", "property", "number", "null", "string", "comment"]);
 
 	const watcher = vscode.workspace.createFileSystemWatcher("**/*.wce");
@@ -449,11 +387,6 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.workspace.onDidChangeTextDocument((e) => parseDocument(e.document)),
 		vscode.workspace.onDidChangeTextDocument((e) => {
 			parseDocument(e.document);
-			vscode.languages.registerDocumentSemanticTokensProvider(
-				{ language: "wce" },
-				semanticTokensProvider,
-				legend
-			);
 		}),
 		watcher.onDidChange((uri) => {
 			const config = vscode.workspace.getConfiguration("wce-vscode");
@@ -470,20 +403,10 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.onDidChangeActiveTextEditor((editor) => {
 			if (editor) {
 				parseDocument(editor.document);
-				vscode.languages.registerDocumentSemanticTokensProvider(
-					{ language: "wce" },
-					semanticTokensProvider,
-					legend
-				);
 			}
 		}),
 		hoverProvider,
 		vscode.workspace.onDidCloseTextDocument((doc) => diagnosticCollection.delete(doc.uri)),
-		vscode.languages.registerDocumentSemanticTokensProvider(
-			{ language: "wce" },
-			semanticTokensProvider,
-			legend
-		),
 		vscode.commands.registerCommand("wce-vscode.convert", () => {
 			runConvert();
 		}),
