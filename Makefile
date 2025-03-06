@@ -13,7 +13,7 @@ run:
 	npm run debug
 .PHONY: package
 package:
-	vsce package
+	./node_modules/vsce/vsce package
 
 docker-image-build:
 ifeq ($(shell docker images -q ${NAME} 2> /dev/null),)
