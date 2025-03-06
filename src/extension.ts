@@ -4,6 +4,7 @@ import * as data from "./definition/data";
 import definitionByName from "./definition/definition";
 import { log } from "console";
 import * as child_process from "child_process";
+const which = require("which");
 
 interface HoverEntry {
 	position: vscode.Range;
@@ -440,6 +441,8 @@ export function activate(context: vscode.ExtensionContext) {
 	const semanticTokensProvider = new WCESemanticTokensProvider();
 	const legend = new vscode.SemanticTokensLegend(["keyword", "property", "number", "null", "string", "comment"]);
 
+	const watcher = vscode.workspace.createFileSystemWatcher("**/*.wce");
+
 	context.subscriptions.push(
 		vscode.workspace.onDidOpenTextDocument(parseDocument),
 		vscode.workspace.onDidChangeTextDocument((e) => parseDocument(e.document)),
@@ -450,6 +453,18 @@ export function activate(context: vscode.ExtensionContext) {
 				semanticTokensProvider,
 				legend
 			);
+		}),
+		watcher.onDidChange((uri) => {
+			const config = vscode.workspace.getConfiguration("wce-vscode");
+			const isConvertOnSave = config.get<boolean>("convertOnSave", false);
+			if (!isConvertOnSave) {
+				return;
+			}
+
+			const openDocuments = vscode.workspace.textDocuments.filter(doc => doc.uri.toString() === uri.toString());
+			if (openDocuments.length > 0) {
+				runConvert();
+			}
 		}),
 		vscode.window.onDidChangeActiveTextEditor((editor) => {
 			if (editor) {
@@ -478,15 +493,12 @@ export function activate(context: vscode.ExtensionContext) {
 				return;
 			}
 
-			const quailPath = config.get<string>("quailPath", "");
-			if (quailPath === "") {
-				return;
-			}
-
 
 			if (doc.languageId !== "wce") {
 				return;
 			}
+
+
 			runConvert();
 		})
 	);
@@ -496,10 +508,20 @@ export function deactivate() { }
 
 function runConvert() {
 	const config = vscode.workspace.getConfiguration("wce-vscode");
-	const quailPath = config.get<string>("quailPath", "");
+	let quailPath = config.get<string>("quailPath", "");
 	if (quailPath === "") {
-		vscode.window.showErrorMessage("Quail path is not set. Configure with wce-vscode.quailPath");
-		return;
+		const isWindows = process.platform === "win32";
+		const quailExecutable = isWindows ? "quail.exe" : "quail";
+
+
+		which(quailExecutable, (err: any, resolvedPath: string) => {
+			if (err) {
+				vscode.window.showErrorMessage("Quail executable not found in PATH. Please configure wce-vscode.quailPath.");
+				return;
+			}
+			quailPath = resolvedPath;
+			console.log(`Resolved quail path: ${quailPath}`);
+		});
 	}
 
 	if (!vscode.workspace.fs.stat(vscode.Uri.file(quailPath)).then(() => true).then(undefined, () => false)) {
