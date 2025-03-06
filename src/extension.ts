@@ -1,10 +1,11 @@
 import * as vscode from "vscode";
+import * as path from "path";
+import * as child_process from "child_process";
+import * as fs from "fs";
 
 import * as data from "./definition/data";
 import definitionByName from "./definition/definition";
 import { log } from "console";
-import * as child_process from "child_process";
-const which = require("which");
 
 interface HoverEntry {
 	position: vscode.Range;
@@ -509,22 +510,26 @@ export function deactivate() { }
 function runConvert() {
 	const config = vscode.workspace.getConfiguration("wce-vscode");
 	let quailPath = config.get<string>("quailPath", "");
+
 	if (quailPath === "") {
 		const isWindows = process.platform === "win32";
 		const quailExecutable = isWindows ? "quail.exe" : "quail";
 
+		// Use platform-specific command to find executable in PATH
+		const cmd = isWindows ? `where ${quailExecutable}` : `which ${quailExecutable}`;
 
-		which(quailExecutable, (err: any, resolvedPath: string) => {
-			if (err) {
-				vscode.window.showErrorMessage("Quail executable not found in PATH. Please configure wce-vscode.quailPath.");
-				return;
-			}
+		try {
+			const resolvedPath = child_process.execSync(cmd, { encoding: 'utf8' }).trim().split('\n')[0];
 			quailPath = resolvedPath;
 			console.log(`Resolved quail path: ${quailPath}`);
-		});
+		} catch (error) {
+			vscode.window.showErrorMessage("Quail executable not found in PATH. Please configure wce-vscode.quailPath.");
+			return;
+		}
 	}
 
-	if (!vscode.workspace.fs.stat(vscode.Uri.file(quailPath)).then(() => true).then(undefined, () => false)) {
+	// Check if the resolved path exists
+	if (!fs.existsSync(quailPath)) {
 		vscode.window.showErrorMessage("Executable path is not a valid file. Please check the path.");
 		return;
 	}
