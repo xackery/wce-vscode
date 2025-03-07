@@ -1,11 +1,9 @@
 import * as vscode from "vscode";
-import * as path from "path";
 import * as child_process from "child_process";
 import * as fs from "fs";
 
 import * as data from "./definition/data";
 import definitionByName from "./definition/definition";
-import { log } from "console";
 
 interface HoverEntry {
 	position: vscode.Range;
@@ -15,73 +13,64 @@ interface HoverEntry {
 
 let hovers: HoverEntry[] = [];
 
-interface TokenEntry {
-	position: vscode.Range;
-	tokenType: string;
-}
-
-let currentDef: data.DefinitionInfo | null = null;
-let propIndex = 0;
-let propCount = 1; // this value is tweaked when a NUM prop sets it
-let propMax = 1;
 let diagnostics: vscode.Diagnostic[] = [];
 let posStart: number = 0; // start cursor position of argument in line
 let posEnd: number = 0; // end position of last argument in line
 let lineNumber: number = 0;
 let argumentWord: string = ""; // this is the current processed argument
 let argumentIndex: number = 0; // this is the current argument index
+let lines: string[] = [];
 
 function parseDocument(document: vscode.TextDocument) {
+	if (!document) return;
 	if (document.languageId != "wce") return;
 	hovers = [];
 	diagnostics = [];
-	currentDef = null;
 
-	const lines = document.getText().split("\n");
+	lines = document.getText().split("\n");
+	lineNumber = 0;
 
-	lines.forEach((line, lineNumberIndex) => {
-		lineNumber = lineNumberIndex;
-		parseLine(line);
-		return;
-	});
-
+	for (; lineNumber < lines.length;) {
+		parseDefinition();
+	}
 	diagnosticCollection.set(document.uri, diagnostics);
 }
 
-function parseLine(line: string) {
+function nextLine(): string {
+	if (lineNumber >= lines.length) {
+		return "";
+	}
+	for (; lineNumber < lines.length;) {
+		lineNumber++;
+		let line = lines[lineNumber];
+		if (!parseLine(line)) continue;
+		return line;
+	}
+	return "";
+}
+
+function parseLine(line: string): boolean {
 	posStart = 0;
 	posEnd = 0;
 	argumentWord = "";
 	argumentIndex = 0;
-
-	// iterate line until we find a non space/tab
+	if (!line) return false;
+	if (line.length === 0) return false;
 	while (line[posStart] === " " || line[posStart] === "\t") {
 		posStart++;
 	}
-	if (posStart === line.length) return;
+	if (posStart === line.length) return false;
 	posEnd = posStart;
 	while (line[posEnd] !== " " && line[posEnd] !== "\t" && posEnd < line.length) {
 		argumentWord += line[posEnd];
 		posEnd++;
 	}
-	if (argumentWord.length === 0) return;
+	if (argumentWord.length === 0) return false;
 
 	if (argumentWord == "//") {
-		/* semantics.push({
-			position: new vscode.Range(new vscode.Position(lineNumber, posStart), new vscode.Position(lineNumber, line.length)),
-			tokenType: "comment",
-		}); */
-
-		return;
+		return false;
 	}
-
-
-	if (currentDef === null) {
-		parseDefinition(line);
-		return;
-	}
-
-	parseProperty(line);
+	return true;
 }
 
 function parseArg(line: string): boolean {
@@ -116,7 +105,9 @@ function wordRangeCurrent(): vscode.Range {
 }
 
 
-function parseDefinition(line: string) {
+function parseDefinition() {
+	let line = nextLine();
+	if (line === "") return;
 	/* if (argumentWord.startsWith("//")) {
 		semantics.push({
 			position: new vscode.Range(new vscode.Position(lineNumber, posStart), new vscode.Position(lineNumber, line.length)),
@@ -156,8 +147,8 @@ function parseDefinition(line: string) {
 	}
 
 
-	let tmpDef = definitionByName(argumentWord);
-	if (tmpDef === null) {
+	const currentDef = definitionByName(argumentWord);
+	if (currentDef === null) {
 		diagnostics.push({
 			message: `unknown definition: ${argumentWord}`,
 			range: wordRangeCurrent(),
@@ -165,11 +156,6 @@ function parseDefinition(line: string) {
 		});
 		return;
 	}
-	currentDef = tmpDef;
-	propIndex = 0;
-	propCount = 1;
-	propMax = 1;
-
 
 	let hoverText = currentDef.Note;
 	if (currentDef.Description !== "") {
@@ -209,37 +195,28 @@ function parseDefinition(line: string) {
 		});
 
 	}
+	for (let propIndex = 0; propIndex < currentDef.Properties.length; propIndex++) {
+		parseProperty(currentDef.Properties[propIndex]);
+	}
 	return;
 }
 
-function parseProperty(line: string) {
-	if (currentDef === null) return;
-	const prop = currentDef.Properties[propIndex];
-	if (!prop) {
-		propIndex = 0;
-		currentDef = null;
-		propCount = 1;
-		propMax = 1;
-		return;
-	}
+function parseProperty(prop: data.PropertyInfo) {
+	let line = nextLine();
 
+	let numCount = 0;
 	if (argumentWord !== prop.Name) {
 		diagnostics.push({
 			message: `Expected property ${prop.Name}.`,
 			range: wordRangeCurrent(),
 			severity: vscode.DiagnosticSeverity.Error,
 		});
-		currentDef = null;
 		return;
 	}
 
 	let hoverText = prop.Note;
 	if (prop.Description !== "") {
 		hoverText += "\n" + prop.Description;
-	}
-	if (propMax > 1) {
-		let propIndex = propMax - propCount - 1;
-		hoverText = `#${propIndex}: ${hoverText}`;
 	}
 
 	hovers.push({
@@ -253,22 +230,10 @@ function parseProperty(line: string) {
 
 
 	if (prop.Args == null) {
-
-		propCount++;
-		if (propCount >= propMax) {
-			propIndex++;
-
-			const nextProp = currentDef.Properties[propIndex];
-			propCount = 1;
-			propMax = 1;
-			if (!nextProp) {
-				propIndex = 0;
-				currentDef = null;
-				return;
-			}
-		}
 		return;
 	}
+
+	let isManyArgs = false;
 
 	for (let argIndex = 0; argIndex < prop.Args.length; argIndex++) {
 		let arg = prop.Args[argIndex];
@@ -281,32 +246,31 @@ function parseProperty(line: string) {
 			return;
 		}
 
-
-		const argFormat = arg.Format;
+		let argFormat = arg.Format;
 		let expected = "";
+
 
 		if (argumentWord === "NULL") {
 			if (!propName.endsWith("?")) {
 				expected = "non-NULL";
 			}
 		} else {
+			if (argFormat.endsWith("...")) {
+				isManyArgs = true;
+				argFormat = argFormat.slice(0, -3);
+			}
 			switch (argFormat) {
 				case "%s":
 					if (typeof argumentWord !== "string") expected = "string";
 					break;
 				case "%d":
+
 					if (isNaN(parseInt(argumentWord, 10))) expected = "integer";
-					if (prop.Properties != null && prop.Properties.length > 0) {
-						propMax = parseInt(argumentWord, 10) + 1;
-					}
+					numCount = parseInt(argumentWord, 10);
 					break;
 				case "%0.8e":
 					// 0.00000000e+00
-					if (!argumentWord.match(/\d\.\d{8}e[\+\-]\d{2}/)) expected = "float";
-					break;
-
-				case "%f":
-					if (!isNaN(parseFloat(argumentWord))) expected = "float";
+					if (!argumentWord.match(/\d\.\d{8}(e[\+\-]\d{2})?/)) expected = "float %0.8e";
 					break;
 				default:
 					expected = "unknown";
@@ -315,16 +279,18 @@ function parseProperty(line: string) {
 		}
 		if (expected !== "") {
 			diagnostics.push({
-				message: `${currentDef.Name}.${argumentWord}: Invalid format for argument ${arg.Name}: expected ${expected}, got ${argumentWord}.`,
+				message: `${argumentWord}: Invalid format for argument ${arg.Name}: expected ${expected}, got ${argumentWord}.`,
 				range: wordRangeCurrent(),
 				severity: vscode.DiagnosticSeverity.Error,
 			});
 		}
 
-		let hoverText = arg.Description;
-		if (propMax > 1) {
-			let propIndex = propMax - propCount - 1;
-			hoverText = `#${propIndex}: ${hoverText}`;
+		let hoverText = "";
+		if (arg.Note !== "") {
+			hoverText += arg.Note;
+		}
+		if (arg.Description !== "") {
+			hoverText += "\n" + arg.Description;
 		}
 
 		hovers.push({
@@ -334,7 +300,7 @@ function parseProperty(line: string) {
 		});
 	}
 
-	if (parseArg(line)) {
+	if (parseArg(line) && !isManyArgs) {
 		diagnostics.push({
 			message: `Too many arguments for property ${prop.Name}.`,
 			range: wordRangeCurrent(),
@@ -343,27 +309,39 @@ function parseProperty(line: string) {
 		return;
 	}
 
-	propCount++;
-	if (propCount >= propMax) {
-		propIndex++;
 
-		const nextProp = currentDef.Properties[propIndex];
-		propCount = 1;
-		propMax = 1;
-		if (!nextProp) {
-			propIndex = 0;
-			currentDef = null;
-			return;
+	if (prop.Properties == null) {
+		return;
+	}
+	if (!prop.Properties) {
+		return;
+	}
+
+	if (numCount == 0) {
+		numCount = 1
+	}
+
+	for (let i = 0; i < numCount; i++) {
+		for (let prop2Index = 0; prop2Index < prop.Properties.length; prop2Index++) {
+			const prop2 = prop.Properties[prop2Index];
+			if (prop2 == null) {
+				continue;
+			}
+			if (!prop2) {
+				continue;
+			}
+
+			parseProperty(prop2);
 		}
 	}
 }
 
-/**
- * Provides hover tooltips for SOMEDEF, SOMEPROP, and their arguments.
- */
 const hoverProvider = vscode.languages.registerHoverProvider("wce", {
 	provideHover(document, position, token) {
 		for (const entry of hovers) {
+			if (!entry.hoverText) {
+				continue;
+			}
 			if (entry.position.contains(position)) {
 				return new vscode.Hover(entry.hoverText);
 			}
@@ -378,9 +356,8 @@ const diagnosticCollection = vscode.languages.createDiagnosticCollection("wce");
  * Activate the extension.
  */
 export function activate(context: vscode.ExtensionContext) {
-	const legend = new vscode.SemanticTokensLegend(["keyword", "property", "number", "null", "string", "comment"]);
-
 	const watcher = vscode.workspace.createFileSystemWatcher("**/*.wce");
+	const watcherAssets = vscode.workspace.createFileSystemWatcher("**/assets/**/*");
 
 	context.subscriptions.push(
 		vscode.workspace.onDidOpenTextDocument(parseDocument),
@@ -400,8 +377,17 @@ export function activate(context: vscode.ExtensionContext) {
 				runConvert();
 			}
 		}),
+		watcherAssets.onDidChange((uri) => {
+			const config = vscode.workspace.getConfiguration("wce-vscode");
+			const isConvertOnSave = config.get<boolean>("convertOnSave", false);
+			if (!isConvertOnSave) {
+				return;
+			}
+
+			runConvert();
+		}),
 		vscode.window.onDidChangeActiveTextEditor((editor) => {
-			if (editor) {
+			if (editor && editor.document.languageId === "wce") {
 				parseDocument(editor.document);
 			}
 		}),
