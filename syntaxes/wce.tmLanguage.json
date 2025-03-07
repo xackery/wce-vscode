@@ -22,10 +22,6 @@
             "match": "//.*$",
             "name": "comment.line.double-slash.wce"
         },
-        "keywords": {
-            "match": "\\b(INCLUDE|WORLDDEF|ZONEDEF|OBJECTDEF)\\b",
-            "name": "keyword.control.wce"
-        },
         "strings": {
             "match": "\"[^\"]*\"",
             "name": "string.quoted.double.wce"
@@ -35,7 +31,7 @@
             "name": "constant.numeric.wce"
         },
         "properties": {
-            "match": "\\b[A-Z][A-Z0-9_]*\\b(?!\\s*:)",
+            "match": "^\\s*(?!.*//)(\\w+\\??)",
             "name": "keyword.control.wce"
         }
     },
