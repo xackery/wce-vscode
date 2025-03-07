@@ -3,7 +3,7 @@
   "displayName": "WCE Syntax Support",
   "description": "WCE (WorldCom Emulator) extension support ",
   "publisher": "xackery",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "icon": "images/logo.png",
   "engines": {
     "vscode": "^1.97.0"
