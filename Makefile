@@ -13,7 +13,8 @@ run:
 	npm run debug
 .PHONY: package
 package:
-	./node_modules/vsce/vsce package
+	docker run ${DOCKER_ARGS} ./node_modules/vsce/vsce package
+	@echo "Go to https://marketplace.visualstudio.com/manage/publishers/xackery for publish updating"
 
 docker-image-build:
 ifeq ($(shell docker images -q ${NAME} 2> /dev/null),)

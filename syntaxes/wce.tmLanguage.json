@@ -31,7 +31,7 @@
             "name": "constant.numeric.wce"
         },
         "properties": {
-            "match": "^\\s*(?!.*//)(\\w+\\??)",
+            "match": "^\\s*(\\w+\\??)",
             "name": "keyword.control.wce"
         }
     },

@@ -495,13 +495,6 @@ export const eqgmodeldef: data.DefinitionInfo = {
                     Name: "BONE",
                     Note: "",
                     Description: "",
-                    Args: null,
-                    Properties: null
-                },
-                {
-                    Name: "NAME",
-                    Note: "",
-                    Description: "",
                     Args: [
                         {
                             Name: "",
