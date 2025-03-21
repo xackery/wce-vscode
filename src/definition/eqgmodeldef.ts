@@ -171,9 +171,237 @@ export const eqgmodeldef: data.DefinitionInfo = {
                             Properties: null
                         }
                     ]
+                }
+            ]
+        },
+        {
+            Name: "NUMVERTICES",
+            Note: "",
+            Description: "",
+            Args: [
+                {
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
+            ],
+            Properties: [
+                {
+                    Name: "VERTEX",
+                    Note: "",
+                    Description: "",
+                    Args: null,
+                    Properties: null
                 },
                 {
-                    Name: "NUMVERTICES",
+                    Name: "XYZ",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "UV",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "UV2",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "NORMAL",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "TINT",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                }
+            ]
+        },
+        {
+            Name: "NUMFACES",
+            Note: "",
+            Description: "",
+            Args: [
+                {
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
+            ],
+            Properties: [
+                {
+                    Name: "FACE",
+                    Note: "",
+                    Description: "",
+                    Args: null,
+                    Properties: null
+                },
+                {
+                    Name: "TRIANGLE",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "MATERIAL",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%s",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "PASSABLE",
                     Note: "",
                     Description: "",
                     Args: [
@@ -185,156 +413,10 @@ export const eqgmodeldef: data.DefinitionInfo = {
                             Example: ""
                         }
                     ],
-                    Properties: [
-                        {
-                            Name: "VERTEX",
-                            Note: "",
-                            Description: "",
-                            Args: null,
-                            Properties: null
-                        },
-                        {
-                            Name: "XYZ",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "UV",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "UV2",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "NORMAL",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "TINT",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        }
-                    ]
+                    Properties: null
                 },
                 {
-                    Name: "NUMFACES",
+                    Name: "TRANSPARENT",
                     Note: "",
                     Description: "",
                     Args: [
@@ -346,137 +428,10 @@ export const eqgmodeldef: data.DefinitionInfo = {
                             Example: ""
                         }
                     ],
-                    Properties: [
-                        {
-                            Name: "FACE",
-                            Note: "",
-                            Description: "",
-                            Args: null,
-                            Properties: null
-                        },
-                        {
-                            Name: "TRIANGLE",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "MATERIAL",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%s",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "PASSABLE",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "TRANSPARENT",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "COLLISIONREQUIRED",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "CULLED",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "DEGENERATE",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        }
-                    ]
+                    Properties: null
                 },
                 {
-                    Name: "NUMBONES",
+                    Name: "COLLISIONREQUIRED",
                     Note: "",
                     Description: "",
                     Args: [
@@ -488,169 +443,214 @@ export const eqgmodeldef: data.DefinitionInfo = {
                             Example: ""
                         }
                     ],
-                    Properties: [
+                    Properties: null
+                },
+                {
+                    Name: "CULLED",
+                    Note: "",
+                    Description: "",
+                    Args: [
                         {
-                            Name: "BONE",
+                            Name: "",
                             Note: "",
                             Description: "",
-                            Args: null,
-                            Properties: null
-                        },
-                        {
-                            Name: "NAME",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%s",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "NEXT",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "CHILDREN",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "CHILDINDEX",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%d",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "PIVOT",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "QUATERNION",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
-                        },
-                        {
-                            Name: "SCALE",
-                            Note: "",
-                            Description: "",
-                            Args: [
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                },
-                                {
-                                    Name: "",
-                                    Note: "",
-                                    Description: "",
-                                    Format: "%0.8e",
-                                    Example: ""
-                                }
-                            ],
-                            Properties: null
+                            Format: "%d",
+                            Example: ""
                         }
-                    ]
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "DEGENERATE",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                }
+            ]
+        },
+        {
+            Name: "NUMBONES",
+            Note: "",
+            Description: "",
+            Args: [
+                {
+                    Name: "",
+                    Note: "",
+                    Description: "",
+                    Format: "%d",
+                    Example: ""
+                }
+            ],
+            Properties: [
+                {
+                    Name: "BONE",
+                    Note: "",
+                    Description: "",
+                    Args: null,
+                    Properties: null
+                },
+                {
+                    Name: "NAME",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%s",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "NEXT",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "CHILDREN",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "CHILDINDEX",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%d",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "PIVOT",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "QUATERNION",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
+                    Name: "SCALE",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        },
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%0.8e",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
                 }
             ]
         }

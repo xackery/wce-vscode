@@ -318,7 +318,7 @@ function parseProperty(prop: data.PropertyInfo) {
 	}
 
 	if (numCount == 0) {
-		numCount = 1
+		return;
 	}
 
 	for (let i = 0; i < numCount; i++) {
