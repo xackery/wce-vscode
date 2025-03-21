@@ -82,6 +82,21 @@ export const eqgparticlerenderdef: data.DefinitionInfo = {
                     Properties: null
                 },
                 {
+                    Name: "PARTICLESUFFIX",
+                    Note: "",
+                    Description: "",
+                    Args: [
+                        {
+                            Name: "",
+                            Note: "",
+                            Description: "",
+                            Format: "%s",
+                            Example: ""
+                        }
+                    ],
+                    Properties: null
+                },
+                {
                     Name: "UNKNOWNA1",
                     Note: "",
                     Description: "",
